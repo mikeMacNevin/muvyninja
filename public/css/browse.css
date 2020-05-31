@@ -1,8 +1,19 @@
-.card {
-    background-color: black;
-    color:white;
+.modal-content{
+    background-color: #FF8552;
 }
 
-card a.btn {
-    background-color: rgba(9,9,121,1);
+.modal-body {
+    background-color: rgb(2,0,36);
+    font-size: 1.2rem;
+
 }
+.modal-footer {
+    background-color:rgb(2,0,36);
+    color:white;
+}
+.modal-footer .btn-navy {
+    background-color:  #FF8552;
+    border: 1px solid  #FF8552;
+    color: white;
+}
+

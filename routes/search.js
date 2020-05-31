@@ -1,24 +1,34 @@
-// const express = require('express');
-// const router = express.Router();
-// const keys = require('../config/keys');
-// const bodyParser = require('body-parser');
-// const request = require('request');
+const express = require('express');
+const router = express.Router();
+const keys = require('../config/keys');
+const bodyParser = require('body-parser');
+const request = require('request');
 
 
 
-// router.get('/search', (req, res) => {
-//       res.render('search');
-//     });
+router.get('/', (req, res) => {
+      res.render('search');
+    });
     
-// app.post('/search', (req, res) => {
-//     console.log(req.body.movieTitle);
-//     let movie = req.body.movieTitle;
+router.post('/film', (req, res) => {
+    let movieRes = '';  
 
-//     // const url = 'https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1';
+    let movie = '';
+    movie = req.body.movieTitle;
 
-//     res.render('search', {
-//     'movie' : movie
-//     });
-// });
+    //post response movie  
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&query=${movie}&page=1&include_adult=false`;
+    
+    request(url, function (error, response, body) {
+    movieRes = JSON.parse(body);
+    console.log('movieRes: ' + movieRes);
+    console.log('first original_title: ' + movieRes.results[0].original_title);
+    
+    res.render('search', {
+        'movies' : movieRes.results.slice(1,7),
+        'firstMovie' : movieRes.results[0]
+    })
+    });
+});
 
-// module.exports = router;
+module.exports = router;

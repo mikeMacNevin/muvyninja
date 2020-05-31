@@ -1,47 +1,66 @@
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 search-forms">
+            <h1>Find a Movie</h1>
+                <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn searchButton active" id="titleButton">
+                        <input type="checkbox"  checked autocomplete="off">Title
+                    </label>
+                    <label class="btn searchButton active" id="yearButton">
+                        <input type="checkbox" checked autocomplete="off">Year Range
+                    </label>
+                    <label class="btn searchButton active" id="genreButton">
+                        <input type="checkbox" checked autocomplete="off" >Genre
+                    </label>
+                </div>
+            <form method="POST" action="/search/film">
+                
+              
+                <div class="form-group search-title my-4">
+                    <h4>Title</h4>
+                    <label class="sr-only" for="inlineFormInputName2">Name</label>
+                    <input type="text" class="form-control mb-2 mr-sm-2" name="movieTitle" id="movieTitle" placeholder="Rush Hour 2">
+                </div>
+                <div class="form-group search-year my-4">
+                    <h4>Release Year</h4>
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="minYear" placeholder="MIN">
+                    <input type="text" class="form-control mb-2 mr-sm-2" id="maxYear" placeholder="MAX">
+                </div>
+                 <div class="form-group search-genre">
+                    <h4>Pick Genre</h4>
+                    <select class="form-control" id="genre">
+                        <option>Drama</option>
+                        <option>Comedy</option>
+                        <option>Romance</option>
+                        <option>Sci-Fi</option>
+                        <option>Children's</option>
+                        <option>Adventure</option>
+                        <option>Horror</option>
+                    </select>
+                </div>
 
+                <button type="submit" class="btn">Submit</button>
 
-<div class="container">
-
-
-
-  <div class="row">
-    <div class="col-md-5">
-        <h1>Select a Movie</h1>
-        <h2>Choose Filters</h2>
-
-        <form class="form-group my-4" method ="POST" action="/search">
-
-            <h4>Title</h4>
-            <label class="sr-only" for="inlineFormInputName2">Name</label>
-            <input type="text" class="form-control mb-2 mr-sm-2" name="movieTitle" id="movieTitle" placeholder="Rush Hour 2">
-            <button type="submit" class="btn btn-primary mb-2">Submit</button>    
-        </form>
-        <form class="form-group">
-          <label class="sr-only" for="inlineFormInputName2">Name</label>
-  
-          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="1905">
-  
-          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="2020">
-  
-          <button type="submit" class="btn btn-primary mb-2">Submit</button>       
-        </form>
+            </form>
+        </div> 
+        {{#if firstMovie.poster_path }}
+            <div class="col-md-6">
+                <img class="img-responsive  search-first-img " src="http://image.tmdb.org/t/p/w185/{{ firstMovie.poster_path }}" alt="{{firstMovie.original_title}}">
+            </div>
+        {{/if}}
     </div>
-    
-    {{#if firstMovie.poster_path }}
-    <div class="col-md-7">
-        <img class="img-responsive float-right search-first-img " src="http://image.tmdb.org/t/p/w185/{{ firstMovie.poster_path }}" alt="{{firstMovie.original_title}}">
-    </div>
+
+    {{#if movies}}
+        <h1>Possible Matches</h1>
     {{/if}}
-</div>
-
 
     <div class="row">
         {{#each movies}}
             {{#if poster_path }}
                 {{#if @first}}
                 {{else}}
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <img class="img-responsive search-img" src="http://image.tmdb.org/t/p/w185/{{ poster_path }}" alt="{{original_title}}">
                 </div> 
                 {{/if}}
