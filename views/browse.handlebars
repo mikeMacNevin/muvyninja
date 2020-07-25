@@ -1,5 +1,5 @@
-<div class="container-fluid">
-    <h1 class="text-center">Popular Now</h1>
+<div class="container-fluid browse-container">
+    <h2 class="text-center">Popular Now</h2>
     <div class="row">
     {{#each movies}}
         {{#if poster_path }}
@@ -32,8 +32,11 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-navy">Save changes</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <form action="/movies" method="POST">
+                                    <button type="submit" class="btn btn-navy">Add to Favorites</button>
+                                    <input type="hidden" id="title" name="title" value={{original_title}} />
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </form>
                             </div>
                         </div>
                     </div>

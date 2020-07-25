@@ -1,0 +1,116 @@
+.search-img {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.cast-profile {
+    max-height: 100px;
+}
+
+.search-first-img {
+}
+
+.btn-group-toggle .searchButton {
+    color: $white;
+    border-color: $orange;
+}
+
+.new-search {
+    border-color: $orange;
+    color: $white;
+}
+
+.new-search:hover {
+    color: $white;
+}
+
+.best-title span {
+    color: $teal;
+}
+
+.new-search:focus {
+    background-color: $orange;
+    color: $white;
+}
+
+@media screen and (max-width: 768px) {
+    .search-first-img {
+        height: 70vmin;
+    }
+    .search-img {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .search-first-img {
+        height: 120vmin;
+    }
+    .search-img {
+        width: 80%;
+    }
+
+    .search-forms {
+        padding-left: 0px;
+        padding-right: 0px;
+
+    }
+}
+
+h1 {
+    color: $orange;
+}
+.search-forms h2 {
+    color: $white;
+}
+
+.search-forms .btn {
+    background-color: $dark-blue; /*#020024 fffdf7*/
+    border: 1px solid ;
+    color:$white;
+    border-color: $teal;
+}
+
+.btn.focus, .btn:focus {
+    box-shadow:none;
+}
+
+.form-check {
+    font-size: 1.25rem;
+}
+
+.form-check-input {
+    width:20px;
+    height: 20px;
+    display: inline-block;
+}
+
+.form-check-label {
+    padding-left: 0.25rem;
+    padding-right: 1.5rem;
+}
+
+.btn-group-toggle .btn.active {
+    background: $teal;
+}
+
+.col-md-2 {
+    padding: 0;
+}
+
+#titleButton {
+    width: 25%;
+}
+
+#submitButton {
+    color: $teal;
+    border-color: $teal;
+}
+
+h5 {
+    color: $orange
+}
+
+// .outer-title {
+//     /* padding-left: 15px; */
+// }

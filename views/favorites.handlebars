@@ -1,0 +1,13 @@
+<h1>Saved Movies</h1>
+
+{{#if favorites}}
+{{#each favorites}}
+    <table>
+        <tr>Title</tr>
+        <tr>{{title}}</tr>    
+    </table>
+            {{/each}}
+
+{{else}}
+<p>You have not saved any stories</p>
+{{/if}}

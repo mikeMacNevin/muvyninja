@@ -1,0 +1,27 @@
+.navbar {
+    background-color: $dark-blue;
+}
+
+
+
+.nav-link {
+    text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-brand >img {
+        max-width: 220px;
+    } 
+}   
+
+@media screen and (max-width: 576px) {
+    .navbar-brand >img {
+        max-width: 200px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .navbar-brand >img {
+        max-width: 180px;
+    }
+}

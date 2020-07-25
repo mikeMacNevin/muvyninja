@@ -1,34 +1,62 @@
-const express = require('express');
-const exphbs  = require('express-handlebars');
-const methodOverride = require('method-override')
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const passport = require('passport');
 const path = require('path');
+const express = require('express');
+const mongoose = require('mongoose');
+const morgan = require('morgan');
+const exphbs  = require('express-handlebars');
+const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const passport = require('passport');
+const session = require('express-session');
 const request = require('request');
+const dotenv = require('dotenv').config();
+const MongoStore = require('connect-mongo')(session);
+const connectDB = require('./config/db');
 
-// Models
-require('./models/User');
-// Config
-require('./config/passport')(passport);
 // Routes
 const auth = require('./routes/auth');
 const index = require('./routes/index');
 const browse = require('./routes/browse');
 const search = require('./routes/search');
-// Load Keys
-const keys = require('./config/keys');
-// Express
+const movies = require('./routes/movies');
+const favorites = require('./routes/favorites');
+
+
+// Load Keys - taken out for .env for now
+// const keys = require('./config/keys');
+
+// Models
+require('./models/User');
+// Config
+require('./config/passport')(passport);
+
+
+// DATABASE - MONGODB
+console.log("process.env.MONGO_URI: " + process.env.MONGO_URI) ;
+
+
+connectDB();
+
+
+// Express - Start App
 const app = express();
+
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
+
+
 // Session
 app.use(cookieParser());
 app.use(session({
   secret: 'secret',
   resave: false,
-  saveUninitialized: false
-}));
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection})
+  })
+);
 //Passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -38,7 +66,7 @@ app.use((req, res, next) => {
 })
 // Mongoose
 mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongoURI, {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -66,6 +94,10 @@ app.use('/browse', browse);
 
 // CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 app.use('/search', search);
+app.use('/movies', movies);
+app.use('/favorites', favorites);
+
+
 
 const port = 4000;
 

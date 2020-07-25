@@ -2,26 +2,31 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    googleID: {
+    googleId: {
         type: String,
-        // maybe delete required, as may have other auths outside of google
-        required: true
-    },
-    email: {
+        required: true,
+      },
+      displayName: {
         type: String,
-        required: true
-    },
-    firstName: {
-        type: String
-    },
-    lastName: {
-        type: String
-    },
-    image: {
-        type: String
-    }
+        required: true,
+      },
+      firstName: {
+        type: String,
+        required: true,
+      },
+      lastName: {
+        type: String,
+        required: true,
+      },
+      image: {
+        type: String,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
 });
 
 
 // Create collection / add schema
-mongoose.model('users', UserSchema);
+module.exports = mongoose.model('users', UserSchema);
