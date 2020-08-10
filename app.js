@@ -1,22 +1,23 @@
 const path = require('path');
 const express = require('express');
+const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const exphbs  = require('express-handlebars');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
+
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const session = require('express-session');
 const request = require('request');
-const dotenv = require('dotenv').config();
 const MongoStore = require('connect-mongo')(session);
 const connectDB = require('./config/db');
 
 // Routes
 const auth = require('./routes/auth');
 const index = require('./routes/index');
-const browse = require('./routes/browse');
+// const browse = require('./routes/browse');
 const search = require('./routes/search');
 const movies = require('./routes/movies');
 const favorites = require('./routes/favorites');
@@ -41,12 +42,25 @@ connectDB();
 // Express - Start App
 const app = express();
 
+// Body Parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Method override
+app.use(
+  methodOverride(function (req, res) {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+      // look in urlencoded POST bodies and delete it
+      let method = req.body._method
+      delete req.body._method
+      return method
+    }
+  })
+)
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-
-
 
 // Session
 app.use(cookieParser());
@@ -77,9 +91,6 @@ app.engine('handlebars', exphbs({
    defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
-// Body Parser
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 
 // Use Static Files
@@ -90,7 +101,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use('/', index);
 
 app.use('/auth', auth);
-app.use('/browse', browse);
+// app.use('/browse', browse);
 
 // CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 app.use('/search', search);

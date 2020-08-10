@@ -1,0 +1,110 @@
+/* GLOBAL */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'PT Sans', sans-serif;
+}
+
+div, p, td, tr, a {
+    font-family: 'Bitter', serif;
+
+}
+
+
+
+.page_index {
+    margin-top:-147px;
+    .landing-container {
+        margin:0;
+        padding:0;
+        // background-image:url("/img/reel.jpg"); 
+        // background-size: contain;
+        // height: 85vmin;
+        // top: -147px;
+        
+        // // -webkit-box-shadow: inset 0px 0px 73px 57px $dark-blue;
+        // // -moz-box-shadow: inset 0px 0px 73px 57px $dark-blue;
+        // // box-shadow: inset 0px 0px 73px 57px $dark-blue;
+        // background-size: cover;
+
+
+        h2 {
+            padding-top:10%;
+            color: $orange;
+            font-size: 6rem;
+            margin-top: 5rem;
+        }
+        h3 {
+            color:$actually_light_teal;
+            font-size: 5rem;
+        }
+
+        .form-control {
+            font-size: 2rem;
+  
+        }
+        #indexSubmit {
+            width:100%;
+        }
+        .btn-primary{
+            font-size:3rem;
+            color: #fff;
+            background-color: $teal;
+            border-color:$teal;
+            font-family: 'PT Sans', sans-serif;
+
+        }
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+            color: #fff;
+            font-size:3.2rem;
+
+        }
+        
+    }
+    .browse-container {
+        
+        & > h2 {
+            padding-top: 2rem;
+            margin-top:5rem;
+            font-family: 'Bitter', serif;
+            color: $actually_light_teal;
+            font-size: 4rem;
+        }
+        .modal-header {
+            h2 {
+                font-size: 4rem;
+            }
+        }
+        .modal-content {
+            background-color: $orange;
+        }
+        .modal-body {
+            background-color: $dark-blue;
+            font-size: 1.2rem;
+            p {
+                font-size: 2rem;
+            }
+
+            button {
+                font-size: 2rem;
+            }
+            .btn-navy {
+                background-color:  $orange;
+                border: 1px solid $orange;
+                color: $white;
+            }  
+        }
+        .modal-footer {
+            background-color:$dark-blue;
+
+  
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint-tablet) {
+    .page_index {
+        .landing-container {
+            height: 50vh;
+        }
+    }
+}

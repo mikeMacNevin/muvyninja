@@ -8,7 +8,8 @@ router.get('/google', passport.authenticate('google', {scope: ['profile']}));
 
 router.get('/google/callback', passport.authenticate('google', {failureRedirected: '/'}
 ), (req, res) => {
-    res.redirect('/');
+    console.log("google/auth: req.protocol: ");
+    res.redirect('/favorites');
 });
 
 // router.get('/verify', (req, res) => {

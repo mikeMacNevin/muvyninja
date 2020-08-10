@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node app",
-    "dev": "cross-env NODE_ENV=development nodemon app"
+    "dev": "cross-env NODE_ENV=development nodemon app",
+    "scss": "node-sass --watch scss -o public/css"
   },
   "keywords": [
     "movie",
@@ -24,16 +25,19 @@
     "express": "^4.17.1",
     "express-handlebars": "^4.0.3",
     "express-session": "^1.17.1",
+    "fs-extra": "^9.0.1",
     "jquery": "^3.5.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.9.7",
+    "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.10.0",
-    "node-sass": "^4.14.1",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "cross-env": "^7.0.2"
+    "cross-env": "^7.0.2",
+    "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4"
   }
 }

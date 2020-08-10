@@ -16,9 +16,16 @@ router.get('/', (req, res) => {
     });
     
 router.post('/film', (req, res) => {
+    // console.log(req.body);
     // post variables
+
     let movieRes = '';      
+    movieRes = JSON.stringify(req.body);
     let movieTitle = req.body.movieTitle;
+
+    console.log("movieTitle: " + movieTitle);
+
+    // console.log("req.body: " + JSON.stringify(req.body));
     let minYear = `&primary_release_date.gte=${req.body.minYear}-01-01`;
     let maxYear = `&primary_release_date.lte=${req.body.maxYear}-12-31`;
     // let theGenre = genre[req.body.genre];
@@ -34,7 +41,6 @@ router.post('/film', (req, res) => {
         .then(response => {
             let movieRes = response.data.results;
             var id =  JSON.stringify(movieRes[0].id);
-            console.log(movieRes);
             axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=52355b2a478c82d6bfe5a57afff6c916
             `).then(response => {
                 let cast = response.data.cast.slice(0,4);
@@ -55,42 +61,72 @@ router.post('/film', (req, res) => {
         });
     }
     else if (movieTitle.length > 0) {
-    console.log("movieTitle: " + req.body.movieTitle);
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&query=${movieTitle}&page=1&include_adult=false`;
-    
-    axios.get(url)
-        .then(response => {
-            // console.log(response.data.results);
-            let movieRes = response.data.results;
-            console.log(JSON.stringify(movieRes[0]));
-
-            res.render('search', {
-                'movies' : movieRes.slice(1,7),
-                'firstMovie' : movieRes[0]
+        console.log("movieTitle: " + req.body.movieTitle);
+        // let requestOne = axios.get(``);
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&query=${movieTitle}&page=1&include_adult=false`, {
+        }).then(function(response) {
+            let requestOne = response.data.results;
+            console.log("requestOne: " + JSON.stringify(requestOne));
+            let movieId = requestOne[0].id;
+            // let movieId = response.data.results[0].movie_id;
+            // console.log("movieId: " + movieId);
+            axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=52355b2a478c82d6bfe5a57afff6c916`, {
+            }).then(function(response) {
+            let requestTwo = response.data;
+                // console.log(requestTwo);
+            let cast = requestTwo.cast;
+            let crew = requestTwo.crew;
+            let directors = [];
+            let producers = [];
+            crew.forEach(e => {
+                if (e.job == "Director") {
+                    console.log(e);
+                    directors.push(e);
+                }
             });
+            crew.forEach(e => {
+                if (e.job == "Producer") {
+                    console.log(e);
+                    producers.push(e);
+                }
+            });
+
+            
+            res.render('search', {
+                'movies' : requestOne,
+                'firstMovie' : requestOne[0],
+                'cast' : cast.slice(0,8),
+                'directors' : directors,
+                'producers' : producers,
+                });      
+            }).catch(e => {
+                console.log(e)
+                }) 
         }).catch(e => {
-            console.log(e)
-        });
+        console.log(e)
+        }) 
+    
     }
-    //post response movie  
-});
-
-// router.post('/movies', ensureAuthenticated, async (req, res) => {
-//     try {
-//         req.body.user = req.user.id;
-
-//         await Movie.create(req.body);
-//     } catch (err) {
-//         console.error(err);
-//         res.render('error/500');
-//     }
-// })
+}); 
 
 module.exports = router;
 
-
-    // request(url, function (error, response, body) {
-    // movieRes = JSON.parse(body);
-    // console.log('movieRes: ' + movieRes);
-    // console.log('first original_title: ' + movieRes.results[0].original_title);
+    // const requestOne = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`);
+    // const requestTwo = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1&year=2019`);
+//     axios.all([requestOne, requestTwo]).then(axios.spread((...responses) => {
+        
+//         let respTwo = [""];
+        
+//         let respOne = responses[0].data.results;
+//         respTwo = responses[1].data;
     
+//         console.log("responseOne " + JSON.stringify(respOne[0]));
+//         // console.log("respTwo: " + JSON.stringify(respTwo.cast));
+//         console.log("respTwo: " + JSON.stringify(respTwo.crew));
+       
+      
+//     }
+// });
+
+
+

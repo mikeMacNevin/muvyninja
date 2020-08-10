@@ -1,13 +1,31 @@
-<h1>Saved Movies</h1>
+{{> _navbar}}
 
-{{#if favorites}}
-{{#each favorites}}
-    <table>
-        <tr>Title</tr>
-        <tr>{{title}}</tr>    
-    </table>
-            {{/each}}
+<div >
+    
+    <h2 class="text-center favorites-h2">Saved Movies</h2>
+    {{#if favorites}}
+    
+    <div class="row">
 
-{{else}}
-<p>You have not saved any stories</p>
-{{/if}}
+        {{#each favorites}}
+          
+        <div class="col-md-4">
+            <img src="http://image.tmdb.org/t/p/w185/{{ poster_path }}" />
+            <h2>{{title}}</h2>
+    
+            <form action="/movies/{{_id}}" method="POST" id="delete-form">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-trash"> Delete </i>
+                </button>
+            </form>
+        </div>
+        {{/each}}
+    {{else}}
+    
+        <h3 class="text-center favorites-h3">No Movies Saved</h3>
+    {{/if}}
+    
+    </div>
+
+</div? 

@@ -1,12 +1,38 @@
 .navbar {
-    background-color: $dark-blue;
+    background: transparent;
+    font-size: 2rem;
+    
+    .nav-item {
+        color: $actually_light_teal;
+        .nav-link {
+            text-align: right;
+     
+        }
+    }
+
+
 }
 
-
-
-.nav-link {
-    text-align: right;
+.navbar-dark .navbar-nav .nav-link {
+    // color:$
 }
+
+.smart-scroll{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    
+  }
+  .scrolled-down{
+     transform:translateY(-100%); transition: all 0.3s ease-in-out;
+  }
+  .scrolled-up{
+     transform:translateY(0); transition: all 0.3s ease-in-out;
+  }
+
+
 
 @media screen and (max-width: 768px) {
     .navbar-brand >img {
