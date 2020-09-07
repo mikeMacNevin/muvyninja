@@ -7,23 +7,23 @@
 <!--Search Movies -->
     <div class="container-fluid ">
 
-        <h2 class="text-center ">Find Your Next Movie</h2>
+        <h2 class="text-center ">Find a Movie</h2>
         {{!-- <h3 class="text-center">Save Your Favorites</h3> --}}
         <div class="mx-auto w-50 ">
             <form method="POST" action="/search/film" id="indexSubmit" class="text-center " >
-                    <input type="text" class="form-control" placeholder="Movie Title" name="movieTitle" id="movieTitle" aria-label="Search Movie Titles" aria-describedby="basic-addon2">
-                    <button class="btn btn-primary text-center my-3" aria-label="Large" type="submit">Find</button>
+                    <input type="text" class="form-control" placeholder="movie title" name="movieTitle" id="movieTitle" aria-label="Search Movie Titles" aria-describedby="basic-addon2">
+                    <button class="btn btn-primary text-center my-1" aria-label="Medium" type="submit">Find</button>
             </form>
         </div>
     </div>
 
-</div>
+    </div>
 
-<div class="container-fluid browse-container">
-    <h2 class="text-center">Popular Now</h2>
-    <div class="row">
-    {{#each popularNow}}
-        {{#if poster_path }}
+    <div class="container-fluid browse-container">
+        <h2 class="text-center">Popular Now</h2>
+        <div class="row">
+        {{#each popularNow}}
+            {{#if poster_path }}
             <div class=" col-md-4 col-xl-2"> 
                 <a href="" data-toggle="modal" data-target="#exampleModal{{original_title}}">
                     <img class="card-img-top my-1"  src="http://image.tmdb.org/t/p/w185/{{ poster_path }}" alt="movie poster">
@@ -75,8 +75,8 @@
                     </div>
                 </div>
             </div>
-        {{/if}}
-    {{/each}}
+            {{/if}}
+        {{/each}}
     </div> 
 
 <h2 class="text-center">Top Grossing: 2020</h2>

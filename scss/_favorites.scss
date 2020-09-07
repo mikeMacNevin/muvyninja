@@ -1,0 +1,23 @@
+.favorites-container {
+
+    h2 {
+        color: $orange;
+        font-size:2.5rem;
+    }
+
+    .favorites-h3 {
+        color: $teal;
+    }
+
+    form .btn-details {
+        background-color: $teal;
+        color: white;
+    }
+    
+    
+    form .btn-danger {
+        background-color: $orange;
+    }
+
+}
+

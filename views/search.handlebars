@@ -2,28 +2,17 @@
 {{!-- style="background: url(http://image.tmdb.org/t/p/w342/{{ firstMovie.poster_path }}); background-repeat: no-repeat; background-size: cover; height: 50vmin;" --}}
 <div class="container-fluid search-container">
         {{#if firstMovie.poster_path }}
-        <div class="row">
-
-            <a class="btn ml-auto new-search mr-4 my-3" href="/search" >New Search</a>
-
-        </div>
+        <a class="btn mr-auto new-search mr-4 my-3" href="/search" >New Search</a>
         {{/if}}
 
     <div class="row ">
 <!--first movie-->
     {{#if firstMovie.poster_path }}
-        <div class="col-md-4 col-lg-4 text-center" >
-            <img class="search-first-img" src="http://image.tmdb.org/t/p/w342/{{ firstMovie.poster_path }}" alt="{{firstMovie.original_title}}">
-            <form action="/movies" method="POST">
-                <input type="hidden" id="title" name="title" value="{{firstMovie.original_title}}" />
-                <input type="hidden" id="poster_path" name="poster_path" value="{{firstMovie.poster_path}}" />
-                <input type="hidden" id="directors" name="directors" value="{{directors}}" />
-                <button type="submit" class="btn btn-navy">Add to Favorites</button>
-            </form>                
+        <div class="col-md-6 col-lg-4 text-center" >
+            <img class="search-first-img img-fluid" src="http://image.tmdb.org/t/p/w342/{{ firstMovie.poster_path }}" alt="{{firstMovie.original_title}}">
         </div>
-
-        <div class="col-md-4 best-match">
-            <h3 class="best-title"><i>{{firstMovie.original_title}}</i></h3>
+        <div class="col-md-6 col-lg-5 best-match">
+            <h3 class="best-title"><i>{{firstMovie.original_title}} ({{year}})</i></h3>
             
             <h4>Director(s):</h4> 
                 {{#each directors}}
@@ -35,8 +24,19 @@
                 {{/each}}
             <br><br>
             <blockquote>{{firstMovie.overview}}</blockquote>
+
+            <div class="d-flex flex-row">
+                <form action="/movies" method="POST">
+                    <input type="hidden" id="title" name="title" value="{{firstMovie.original_title}}" />
+                    <input type="hidden" id="poster_path" name="poster_path" value="{{firstMovie.poster_path}}" />
+                    <input type="hidden" id="directors" name="directors" value="{{directors}}" />
+                    <button type="submit" class="btn btn-favorites">Add to Favorites</button>
+                </form>  
+                <a href="/favorites"><button class="btn btn-link">View Favorites</button></a>         
+
+            </div> 
         </div>   
-        <div class="col-md-3 col-lg-4 ">
+        <div class="col-md-5 offset-md-3 col-lg-3 offset-lg-0 ">
              <table>
                 {{#each cast}}
                 <tr>
@@ -53,7 +53,7 @@
     
     {{else}} 
         <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 search-forms ">
-            <h2 class="mt-5">Find a Movie</h2>
+            <h2 class="mt-5 text-center">Custom Search</h2>
             <div class="btn-group-toggle d-flex justify-content-start" data-toggle="buttons">
                  <label class="btn mr-1 searchButton first-button active" id="genreButton">
                     <input type="checkbox" checked autocomplete="off" >Genre
@@ -87,7 +87,7 @@
                     <label class="sr-only" for="inlineFormInputName2">Name</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" name="movieTitle" id="movieTitle" placeholder="Rush Hour 2">
                 </div>
-                <button type="submit" id="submitButton" class="btn btn-block my-3 mx-auto">Submit</button>
+                <button type="submit" id="submitButton" class="btn btn-block my-3 mx-auto">Search</button>
             </form>
         </div>
         {{/if}}

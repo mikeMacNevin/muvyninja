@@ -1,6 +1,6 @@
 /* GLOBAL */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'Work Sans', sans-serif;
 }
 
 div, p, td, tr, a {
@@ -13,6 +13,10 @@ div, p, td, tr, a {
 .page_index {
     margin-top:-147px;
     .landing-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 40vh;
         margin:0;
         padding:0;
         // background-image:url("/img/reel.jpg"); 
@@ -27,50 +31,56 @@ div, p, td, tr, a {
 
 
         h2 {
-            padding-top:10%;
+            margin-top:10%;
             color: $orange;
-            font-size: 6rem;
-            margin-top: 5rem;
+            font-size: 2.5rem;
+            margin-bottom:0;
         }
-        h3 {
-            color:$actually_light_teal;
-            font-size: 5rem;
-        }
+
 
         .form-control {
             font-size: 2rem;
+            width:50%;
+            margin: 0 auto;
   
         }
+        input[type="text"] {  
+            text-align: center; 
+            font-family: "Work Sans", sans-serif;
+            font-size:1rem;
+        } 
         #indexSubmit {
             width:100%;
         }
         .btn-primary{
-            font-size:3rem;
+            font-size:1.5em;
             color: #fff;
             background-color: $teal;
             border-color:$teal;
-            font-family: 'PT Sans', sans-serif;
+            font-family: 'Bitter', serif;
+            padding-top:1px;
+            padding-bottom:1px;
 
         }
         .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
             color: #fff;
-            font-size:3.2rem;
+            font-size:1.8rem;
 
         }
         
     }
     .browse-container {
-        
+        margin-top: 5rem;
         & > h2 {
             padding-top: 2rem;
             margin-top:5rem;
             font-family: 'Bitter', serif;
             color: $actually_light_teal;
-            font-size: 4rem;
+            font-size: 2.5rem;
         }
         .modal-header {
             h2 {
-                font-size: 4rem;
+                font-size: 3rem;
             }
         }
         .modal-content {
@@ -80,7 +90,7 @@ div, p, td, tr, a {
             background-color: $dark-blue;
             font-size: 1.2rem;
             p {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             button {

@@ -1,9 +1,13 @@
 .search-container {
+    margin-top: 1rem;
 
+    .btn-link {
+        color: $teal;
+    }
 
     // new search 
     .new-search {
-        border-color: $orange;
+        border-color: $teal;
         color: $white;
     }
     .new-search:hover {
@@ -12,6 +16,10 @@
     .new-search:focus {
         background-color: $orange;
         color: $white;
+    }
+
+    .btn-favorites {
+        background-color: $teal;
     }
     /* first movie */
 
@@ -40,16 +48,18 @@
     .search-forms {
         top: -147px;
         padding-top: 5rem;
-        height: 100vh;
+        height: 80vh;
         h2 {
             font-size: 3.5rem;
+            color: $orange;
         }
         h5 {
-            font-size: 3rem;
+            color:white;
+            font-size: 2.5rem;
         }
 
         .form-control {
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
         #genre {
             height: 62px;
@@ -59,12 +69,18 @@
             
         }
         .btn {
-            font-size: 2rem;
+            font-size: 1.5rem;
             border-color: $white;
         } 
+        #submitButton {
+            border-color: $actually_light_teal;
+            color: $actually_light_teal;
+        }
     }
 
     .other-matches {
+        color: $actually_light_teal;
+        
         .search-img {
             width: 100%;
             margin-top: 1rem;
@@ -83,7 +99,6 @@
 
 
     .search-forms h2 {
-        color: $white;
     }
     
     .search-forms .btn {
@@ -130,7 +145,7 @@
     }
     
     h5 {
-        color: $orange
+        color: $actually_light_teal;
     }
     
     .modal-content {

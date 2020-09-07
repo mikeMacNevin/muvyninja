@@ -46,10 +46,11 @@ router.post('/film', (req, res) => {
                 let cast = response.data.cast.slice(0,4);
         
                 console.log("cast - 5: " + JSON.stringify(cast));
-                console.log("cast - 5: " + JSON.stringify(cast));
-
+                console.log("first movie: " + JSON.stringify(movieRes[0]));
+                console.log("first movie year: " + movieRes[0].release_date.slice(0,4));
                 res.render('search', {
                     'movies' : movieRes.slice(1,19),
+                    'year': movieRes[0].release_date.slice(0,4),
                     'firstMovie' : movieRes[0],
                     'cast' : cast
                 });
