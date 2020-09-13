@@ -28,15 +28,15 @@ router.post('/film', (req, res) => {
     // console.log("req.body: " + JSON.stringify(req.body));
     let minYear = '';
     let maxYear = '';
-    if (req.body.minYear.length > 1) {
+    if (req.body.minYear) {
         minYear = `&primary_release_date.gte=${req.body.minYear}-01-01`;
     }
-    if (req.body.maxYear.length > 1 ) {
+    if (req.body.maxYear) {
         maxYear = `&primary_release_date.lte=${req.body.maxYear}-12-31`;
     }
     // let theGenre = genre[req.body.genre];
     let genre = '';
-    if (req.body.genre.length > 1 ) {
+    if (req.body.genre) {
         genre = `&with_genres=${genreObj.genre[req.body.genre]}`;
     }
     console.log(minYear);
