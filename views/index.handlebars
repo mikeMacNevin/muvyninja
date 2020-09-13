@@ -7,14 +7,18 @@
 <!--Search Movies -->
     <div class="container-fluid ">
 
-        <h2 class="text-center ">Find a Movie</h2>
-        {{!-- <h3 class="text-center">Save Your Favorites</h3> --}}
-        <div class="mx-auto w-50 ">
-            <form method="POST" action="/search/film" id="indexSubmit" class="text-center " >
-                    <input type="text" class="form-control" placeholder="movie title" name="movieTitle" id="movieTitle" aria-label="Search Movie Titles" aria-describedby="basic-addon2">
-                    <button class="btn btn-primary text-center my-1" aria-label="Medium" type="submit">Find</button>
+        {{!-- <h2 class="text-center ">Find a Movie</h2> --}}
+        <div class="mx-auto">
+            <form method="POST" action="/search/film" autocomplete="off" id="indexSubmit" class="text-center " >
+                    <input type="text" class="form-control" placeholder="movie title" name="movieTitle" id="movieTitle"  onfocus="this.placeholder = '' " onblur="this.placeholder = 'Movie Title'"  aria-label="Search Movie Titles" aria-describedby="basic-addon2">
+                    <button class="btn btn-primary text-center my-2" aria-label="Medium" type="submit">Find</button>
             </form>
         </div>
+
+        {{!-- <div class="md-form">
+            <input type="text" id="form1" class="form-control">
+                <label for="form1">Example label</label>
+        </div> --}}
     </div>
 
     </div>
@@ -79,7 +83,7 @@
         {{/each}}
     </div> 
 
-<h2 class="text-center">Top Grossing: 2020</h2>
+<h2 class="text-center">Top Movies of 2020</h2>
 <div class="row">
     {{#each yearGrossing}}
         {{#if poster_path }}
@@ -186,4 +190,7 @@
 
     
 </div>
+  <a id="back-to-top" href="#" class="btn btn-lg back-to-top" role="button"><i class="fa fa-chevron-up"></i></a>
+
 </div>
+

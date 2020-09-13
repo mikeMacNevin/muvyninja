@@ -2,7 +2,7 @@
 {{!-- style="background: url(http://image.tmdb.org/t/p/w342/{{ firstMovie.poster_path }}); background-repeat: no-repeat; background-size: cover; height: 50vmin;" --}}
 <div class="container-fluid search-container">
         {{#if firstMovie.poster_path }}
-        <a class="btn mr-auto new-search mr-4 my-3" href="/search" >New Search</a>
+        <a class="btn mx-auto new-search mr-4 my-3" href="/search" >New Search</a>
         {{/if}}
 
     <div class="row ">
@@ -12,7 +12,7 @@
             <img class="search-first-img img-fluid" src="http://image.tmdb.org/t/p/w342/{{ firstMovie.poster_path }}" alt="{{firstMovie.original_title}}">
         </div>
         <div class="col-md-6 col-lg-5 best-match">
-            <h3 class="best-title"><i>{{firstMovie.original_title}} ({{year}})</i></h3>
+            <h3 class="best-title"><i>{{firstMovie.original_title}} ({{ year }})</i></h3>
             
             <h4>Director(s):</h4> 
                 {{#each directors}}
@@ -66,7 +66,7 @@
                 </label>
             </div>
 
-            <form method="POST" id="searchForm" action="/search/film">        
+            <form method="POST" id="searchForm" class="mx-auto" action="/search/film">        
                 <div class="form-group search-year my-4">
                     <h5>Release Year</h5>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="minYear" name="minYear" placeholder="MIN">
@@ -149,6 +149,7 @@
             {{/if}}
         {{/each}}
     </div>
+  <a id="back-to-top" href="#" class="btn btn-lg back-to-top" role="button"><i class="fa fa-chevron-up"></i></a>
 
 </div>
 

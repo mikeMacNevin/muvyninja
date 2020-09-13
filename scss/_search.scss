@@ -1,5 +1,7 @@
 .search-container {
     margin-top: 1rem;
+    text-align: center;
+    width: 100%;
 
     .btn-link {
         color: $teal;
@@ -32,7 +34,7 @@
             color: $teal;
         }
         h4 {
-            font-size:1.75rem;
+            font-size:1.5rem;
             margin-bottom:0.3rem;
             color: $teal;
         }
@@ -49,17 +51,36 @@
         top: -147px;
         padding-top: 5rem;
         height: 80vh;
+
+        #searchForm {
+            width: 50%;
+        }
+
+        input, select {
+            margin: 0 auto;
+            width: 100%;
+            padding-left: 0;
+            border: 0;
+            border-bottom:1px solid $white;
+            border-radius: 0;
+            background-color:rgba(0,0,0,0) !important;
+            color: $white;
+        }
+
+        input::placeholder {
+            color: $white;
+        }
         h2 {
-            font-size: 3.5rem;
-            color: $orange;
+            font-size: 3.3rem;
+            color: $white;
         }
         h5 {
-            color:white;
-            font-size: 2.5rem;
+            color:$yellow;
+            font-size: 2.3rem;
         }
 
         .form-control {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
         #genre {
             height: 62px;
@@ -69,17 +90,17 @@
             
         }
         .btn {
-            font-size: 1.5rem;
-            border-color: $white;
+            font-size: 1.3rem;
+            border-color: $yellow;
         } 
         #submitButton {
-            border-color: $actually_light_teal;
-            color: $actually_light_teal;
+            border-color: $yellow;
+            color: $yellow;
         }
     }
 
     .other-matches {
-        color: $actually_light_teal;
+        color: $white;
         
         .search-img {
             width: 100%;
@@ -102,7 +123,7 @@
     }
     
     .search-forms .btn {
-        background-color: $dark-blue; /*#020024 fffdf7*/
+        background-color: $dark; /*#020024 fffdf7*/
         border: 1px solid ;
         color:$white;
         border-color: $teal;
@@ -145,18 +166,18 @@
     }
     
     h5 {
-        color: $actually_light_teal;
+        color: $white;
     }
     
     .modal-content {
         background-color: $orange;
     }
     .modal-body {
-        background-color: $dark-blue;
+        background-color: $dark;
         font-size: 1.2rem;
     }
     .modal-footer {
-        background-color:$dark-blue;
+        background-color:$dark;
         color:$white;
         .btn-navy {
             background-color:  $orange;
@@ -168,7 +189,7 @@
 
 @media screen and (max-width: 768px) {
     .search-first-img {
-        height: 70vmin;
+        height: 50vmin;
     }
     .search-img {
         width: 40%;

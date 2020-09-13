@@ -26,31 +26,43 @@ router.post('/film', (req, res) => {
     console.log("movieTitle: " + movieTitle);
 
     // console.log("req.body: " + JSON.stringify(req.body));
-    let minYear = `&primary_release_date.gte=${req.body.minYear}-01-01`;
-    let maxYear = `&primary_release_date.lte=${req.body.maxYear}-12-31`;
+    let minYear = '';
+    let maxYear = '';
+    if (req.body.minYear.length > 1) {
+        minYear = `&primary_release_date.gte=${req.body.minYear}-01-01`;
+    }
+    if (req.body.maxYear.length > 1 ) {
+        maxYear = `&primary_release_date.lte=${req.body.maxYear}-12-31`;
+    }
     // let theGenre = genre[req.body.genre];
-
-    let genre = `&with_genres=${genreObj.genre[req.body.genre]}`;
+    let genre = '';
+    if (req.body.genre.length > 1 ) {
+        genre = `&with_genres=${genreObj.genre[req.body.genre]}`;
+    }
     console.log(minYear);
     console.log(maxYear);
     console.log(genre);
 
     if (movieTitle.length < 1) {
         const url = `https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1${minYear}${maxYear}${genre}`;
+        console.log(url);
         axios.get(url)
         .then(response => {
             let movieRes = response.data.results;
             var id =  JSON.stringify(movieRes[0].id);
             axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=52355b2a478c82d6bfe5a57afff6c916
             `).then(response => {
+
+
                 let cast = response.data.cast.slice(0,4);
         
-                console.log("cast - 5: " + JSON.stringify(cast));
-                console.log("first movie: " + JSON.stringify(movieRes[0]));
+                // console.log("cast - 5: " + JSON.stringify(cast));
+                // console.log("first movie: " + JSON.stringify(movieRes[0]));
                 console.log("first movie year: " + movieRes[0].release_date.slice(0,4));
+                let year = movieRes[0].release_date.slice(0,4);
                 res.render('search', {
                     'movies' : movieRes.slice(1,19),
-                    'year': movieRes[0].release_date.slice(0,4),
+                    'year': year,
                     'firstMovie' : movieRes[0],
                     'cast' : cast
                 });
@@ -92,10 +104,11 @@ router.post('/film', (req, res) => {
                 }
             });
 
-            
+            let year = requestOne[0].release_date.slice(0,4);
             res.render('search', {
                 'movies' : requestOne,
                 'firstMovie' : requestOne[0],
+                'year': year,
                 'cast' : cast.slice(0,8),
                 'directors' : directors,
                 'producers' : producers,

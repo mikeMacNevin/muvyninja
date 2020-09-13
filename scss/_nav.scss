@@ -1,15 +1,15 @@
 .navbar {
     background: transparent;
     font-size: 1.5rem;
-    
+    font-family: $work-sans;
     img {
         max-width: 250px;
     }
     .nav-item {
-        color: $actually_light_teal;
+        color:  $orange;
 
         .nav-link {        
-            color: $actually_light_teal;
+            color:  $orange;
             text-align: right;
      
         }

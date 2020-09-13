@@ -15,12 +15,12 @@
            <div class="d-flex flex-row justify-content-center text-center">
                 <form action="/search/film" method="POST" id="details-form">
                     <input type="hidden" name="movieTitle" id="movieTitle" value="{{title}}" >
-                    <button type="submit" class="btn btn-details">&nbsp;Details&nbsp;&nbsp;</button>
+                    <button type="submit" class="btn btn-details">Details</button>
                 </form>
                 <form action="/movies/{{_id}}" method="POST" id="delete-form">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn btn-danger">
-                        <i class="fas fa-trash">&nbsp;&nbsp; Delete &nbsp;&nbsp;</i>
+                        <i class="fa fa-trash"></i> Delete
                     </button>
                 </form>
 
