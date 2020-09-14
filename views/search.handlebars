@@ -27,7 +27,7 @@
 
             <div class="d-flex flex-row">
                 <form action="/movies" method="POST">
-                    <input type="hidden" id="title" name="title" value="{{firstMovie.original_title}}" />
+                    <input type="hidden"  id="title" name="title" value="{{firstMovie.original_title}}" />
                     <input type="hidden" id="poster_path" name="poster_path" value="{{firstMovie.poster_path}}" />
                     <input type="hidden" id="directors" name="directors" value="{{directors}}" />
                     <button type="submit" class="btn btn-favorites">Add to Favorites</button>
@@ -69,12 +69,12 @@
             <form method="POST" id="searchForm" class="mx-auto" action="/search/film">        
                 <div class="form-group search-year my-4">
                     <h5>Release Year</h5>
-                    <input type="text" class="form-control mb-2 mr-sm-2" id="minYear" name="minYear" placeholder="MIN">
-                    <input type="text" class="form-control mb-2 mr-sm-2" id="maxYear" name="maxYear" placeholder="MAX">
+                    <input type="text" autocomplete="off" onfocus="this.placeholder = '' " onblur="this.placeholder = 'MIN Year'" class="form-control mb-2" id="minYear" name="minYear" placeholder="MIN">
+                    <input type="text" autocomplete="off" onfocus="this.placeholder = '' " onblur="this.placeholder = 'MAX Year'"class="form-control mb-2" id="maxYear" name="maxYear" placeholder="MAX">
                 </div>
                  <div class="form-group search-genre my-4">
                     <h5>Pick Genre</h5>
-                    <select class="form-control" id="genre" name="genre">
+                    <select class="form-control" id="genre" name="genre" autocomplete="off" onfocus="this.placeholder = '' " onblur="this.placeholder = 'Genre'" aria-placeholder="Genre">
                         <option>Drama</option>
                         <option>Comedy</option>
                         <option>Romance</option>
@@ -85,7 +85,7 @@
                 <div class="form-group search-title my-4 d-none">
                     <h5>Title</h5>
                     <label class="sr-only" for="inlineFormInputName2">Name</label>
-                    <input type="text" class="form-control mb-2 mr-sm-2" name="movieTitle" id="movieTitle" placeholder="Rush Hour 2">
+                    <input type="text" class="form-control mb-2" name="movieTitle" id="movieTitle" placeholder="Rush Hour 2">
                 </div>
                 <button type="submit" id="submitButton" class="btn btn-block my-3 mx-auto">Search</button>
             </form>

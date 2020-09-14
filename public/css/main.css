@@ -40,13 +40,14 @@
 body {
   background: #231F20;
   color: #EFE6DD;
+  max-width: 100vw;
   /* background: linear-gradient(90deg, rgba(217,104,8,0.9) 0%, rgba(9,9,121,0.9418604651162791) 50%, rgba(217,104,8,0.9) 100%
     );    background-attachment: fixed; */ }
 
 .search-container {
   margin-top: 1rem;
   text-align: center;
-  width: 100%;
+  max-width: 100%;
   /* first movie */ }
   .search-container .btn-link {
     color: #2191fb; }
@@ -73,21 +74,23 @@ body {
     margin-bottom: 0.1rem; }
   .search-container .best-match .cast-profile {
     max-height: 100px; }
+  .search-container #searchForm input, .search-container #searchForm select {
+    color: #EFE6DD;
+    margin: 0 auto;
+    width: 80%;
+    padding-left: 0;
+    border: 0;
+    border-bottom: 1px solid #EFE6DD;
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0) !important; }
+  .search-container #searchForm select option {
+    color: #231F20; }
   .search-container .search-forms {
     top: -147px;
     padding-top: 5rem;
     height: 80vh; }
     .search-container .search-forms #searchForm {
       width: 50%; }
-    .search-container .search-forms input, .search-container .search-forms select {
-      margin: 0 auto;
-      width: 100%;
-      padding-left: 0;
-      border: 0;
-      border-bottom: 1px solid #EFE6DD;
-      border-radius: 0;
-      background-color: rgba(0, 0, 0, 0) !important;
-      color: #EFE6DD; }
     .search-container .search-forms input::placeholder {
       color: #EFE6DD; }
     .search-container .search-forms h2 {

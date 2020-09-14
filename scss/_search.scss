@@ -1,7 +1,7 @@
 .search-container {
     margin-top: 1rem;
     text-align: center;
-    width: 100%;
+    max-width: 100%;
 
     .btn-link {
         color: $teal;
@@ -47,6 +47,23 @@
         }
     }
 
+    #searchForm {
+
+        input, select {
+            color: $white;
+            margin: 0 auto;
+            width: 80%;
+            padding-left: 0;
+            border: 0;
+            border-bottom:1px solid $white;
+            border-radius: 0;
+            background-color:rgba(0,0,0,0) !important;
+        }
+        select option {
+            color: $dark;
+        }
+    }
+
     .search-forms {
         top: -147px;
         padding-top: 5rem;
@@ -56,16 +73,7 @@
             width: 50%;
         }
 
-        input, select {
-            margin: 0 auto;
-            width: 100%;
-            padding-left: 0;
-            border: 0;
-            border-bottom:1px solid $white;
-            border-radius: 0;
-            background-color:rgba(0,0,0,0) !important;
-            color: $white;
-        }
+        
 
         input::placeholder {
             color: $white;

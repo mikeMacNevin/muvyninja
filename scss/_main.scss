@@ -1,14 +1,11 @@
 body{
     background: $dark;
     color: $white;
+    max-width: 100vw;
     /* background: linear-gradient(90deg, rgba(217,104,8,0.9) 0%, rgba(9,9,121,0.9418604651162791) 50%, rgba(217,104,8,0.9) 100%
     );    background-attachment: fixed; */
 
 }
-
-.the-body {
-}
-
 
     // "title":
     //     {"message":"Error, expected `title` to be unique. Value: `Ad`",
