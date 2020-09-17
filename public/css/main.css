@@ -112,8 +112,9 @@ body {
     .search-container .search-forms .btn-group-toggle .searchButton {
       color: #EFE6DD; }
     .search-container .search-forms .btn {
-      font-size: 1.3rem;
-      border-color: #F3DFA2; }
+      font-size: 1rem;
+      padding-left: 4px;
+      padding-right: 4px; }
     .search-container .search-forms #submitButton {
       border-color: #F3DFA2;
       color: #F3DFA2; }
@@ -139,6 +140,8 @@ body {
   .search-container .form-check-label {
     padding-left: 0.25rem;
     padding-right: 1.5rem; }
+  .search-container .btn-group-toggle .btn {
+    color: #EFE6DD; }
   .search-container .btn-group-toggle #genreButton, .search-container .btn-group-toggle #yearButton {
     border-color: #BB4430; }
   .search-container .btn-group-toggle .active#genreButton, .search-container .btn-group-toggle .active#yearButton {
