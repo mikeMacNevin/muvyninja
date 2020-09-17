@@ -111,16 +111,17 @@
                                     </div>
                                     <div class="col-md-5 text-white text-center">
                                         <img class="w-100" src="http://image.tmdb.org/t/p/w185/{{ backdrop_path }}" alt="">
+                                    <form action="/search/film" method="POST">
+                                        <input type="hidden" id="movie_id" name="movie_id" value={{id}} />
+                                        <input type="hidden" id="movieTitle" name="movieTitle" value="{{title}}" />
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn  modal-add btn-navy">View Details</button>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <form action="/movies" method="POST">
-                                    <input type="hidden" id="title" name="title" value={{title}} />
-                                    <input type="hidden" id="poster_path" name="poster_path" value={{poster_path}} />
-                                    <button type="submit" class="btn modal-add btn-navy"  data-dismiss="modal">Add to Favorites</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -154,21 +155,20 @@
                                     <div class="col-md-7 text-white">
                                         <p> {{overview}}</p>
                                             <br><br>
-                                        <p>{{release_date}}</p>
-
                                     </div>
                                     <div class="col-md-5 text-white text-center">
                                         <img class="w-100" src="http://image.tmdb.org/t/p/w185/{{ backdrop_path }}" alt="">
+                                    <form action="/search/film" method="POST">
+                                        <input type="hidden" id="movie_id" name="movie_id" value={{id}} />
+                                        <input type="hidden" id="movieTitle" name="movieTitle" value="{{title}}" />
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn  modal-add btn-navy">View Details</button>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <form action="/movies" method="POST">
-                                    <input type="hidden" id="title" name="title" value={{title}} />
-                                    <input type="hidden" id="poster_path" name="poster_path" value={{poster_path}} />
-                                    <button type="submit" class="btn modal-add btn-navy"  data-dismiss="modal">Add to Favorites</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </form>
+
                             </div>
                         </div>
                     </div>

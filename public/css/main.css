@@ -235,7 +235,7 @@ body {
     padding-bottom: 1px; }
   .page_index .landing-container .btn-primary:hover, .page_index .landing-container .btn-primary:focus, .page_index .landing-container .btn-primary:active, .page_index .landing-container .btn-primary.active, .page_index .landing-container .open > .dropdown-toggle.btn-primary {
     color: #fff;
-    font-size: 1.8rem; }
+    font-size: 1.2rem; }
 
 .page_index .browse-container {
   margin-top: 5rem; }
