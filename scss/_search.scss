@@ -48,16 +48,18 @@
     }
 
     #searchForm {
+        text-align: left;
 
         input, select {
             color: $white;
-            margin: 0 auto;
-            width: 80%;
+            margin: 0;
+            width: 100%;
             padding-left: 0;
             border: 0;
             border-bottom:1px solid $white;
             border-radius: 0;
             background-color:rgba(0,0,0,0) !important;
+            font-family: 'Bitter', serif;
         }
         select option {
             color: $dark;
@@ -70,7 +72,7 @@
         height: 80vh;
 
         #searchForm {
-            width: 50%;
+            width: 78%;
         }
 
         
@@ -92,6 +94,11 @@
         }
         #genre {
             height: 62px;
+        }
+
+        .btn-group-toggle {
+            margin: 0 auto;
+            width: 78%;
         }
         .btn-group-toggle .searchButton {
             color: $white;
@@ -156,8 +163,18 @@
         padding-right: 1.5rem;
     }
     
-    .btn-group-toggle .btn.active {
-        background: $teal;
+    .btn-group-toggle  {
+        #genreButton, #yearButton {
+            border-color: $orange;
+        }
+        .active#genreButton, .active#yearButton {
+            background: $orange;
+
+        }
+        .active#titleButton {
+            background: $teal;
+
+        }
     }
     
     .col-md-2 {

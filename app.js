@@ -16,7 +16,6 @@ const connectDB = require('./config/db');
 
 
 
-
 // Routes
 const auth = require('./routes/auth');
 const index = require('./routes/index');
@@ -91,7 +90,17 @@ mongoose.connect(process.env.MONGO_URI, {
   .catch(err => console.log(err));
 // Handlebars
 app.engine('handlebars', exphbs({
-   defaultLayout: 'main'
+   defaultLayout: 'main',
+   helpers: {
+     yearOnly: function (movieDate, start, end) { 
+       if (movieDate) {
+        movieDate = movieDate.substring(start, end); 
+
+       }
+       return movieDate; 
+
+      }
+   }
 }));
 app.set('view engine', 'handlebars');
 

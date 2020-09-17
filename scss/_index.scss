@@ -15,7 +15,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 60vh;
+        height: 70vh;
         margin:0;
         padding:0;
         // background-image:url("/img/reel.jpg"); 
@@ -51,8 +51,8 @@
         .form-control::placeholder {
             color: $white;
             font-family: $bitter;
+        
         }
-
         input {
             box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0), inset 0 0 0 100px $dark;
         }
@@ -70,7 +70,7 @@
             background-color: transparent;
         }
         .btn-primary{
-            font-size:1.5em;
+            font-size:1rem;
             color: $white;
             background-color: transparent;
             border-color:$teal;
@@ -88,14 +88,14 @@
         & > h2 {
             padding-top: 2rem;
             margin-top:3rem;
-            margin-bottom: 3rem;
-            font-family: 'Bitter', serif;
+            margin-bottom: 0;
+            font-family: 'Work Sans', sans-serif;
             color: $white;
-            font-size: 1.5rem;
+            font-size: 2rem;
         }
         .modal-header {
             h2 {
-                font-size: 3rem;
+                font-size: 2rem;
             }
         }
         .modal-content {
@@ -105,22 +105,20 @@
             background-color: $dark;
             font-size: 1.2rem;
             p {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
 
             button {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
             .btn-navy {
-                background-color:  $orange;
-                border: 1px solid $orange;
+                background-color:  $teal;
+                border: 1px solid $teal;
                 color: $white;
             }  
         }
         .modal-footer {
             background-color:$dark;
-
-  
         }
     }
 
@@ -131,10 +129,14 @@
 @media (max-width: $breakpoint-tablet) {
     .page_index {
         .landing-container {
-            height: 50vh;
+            height: 75vh;
             .form-control {
                 width: 80%
             }
+        }
+        .col-xl-2 {
+            padding-left: 0;
+            padding-right: 0;
         }
      
     }
@@ -147,5 +149,6 @@
                 width: 30%
             }
         }
+
     }
 }

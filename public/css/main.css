@@ -1,6 +1,6 @@
 .navbar {
   background: transparent;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: "Work Sans", sans-serif; }
   .navbar img {
     max-width: 250px; }
@@ -74,23 +74,26 @@ body {
     margin-bottom: 0.1rem; }
   .search-container .best-match .cast-profile {
     max-height: 100px; }
-  .search-container #searchForm input, .search-container #searchForm select {
-    color: #EFE6DD;
-    margin: 0 auto;
-    width: 80%;
-    padding-left: 0;
-    border: 0;
-    border-bottom: 1px solid #EFE6DD;
-    border-radius: 0;
-    background-color: rgba(0, 0, 0, 0) !important; }
-  .search-container #searchForm select option {
-    color: #231F20; }
+  .search-container #searchForm {
+    text-align: left; }
+    .search-container #searchForm input, .search-container #searchForm select {
+      color: #EFE6DD;
+      margin: 0;
+      width: 100%;
+      padding-left: 0;
+      border: 0;
+      border-bottom: 1px solid #EFE6DD;
+      border-radius: 0;
+      background-color: rgba(0, 0, 0, 0) !important;
+      font-family: 'Bitter', serif; }
+    .search-container #searchForm select option {
+      color: #231F20; }
   .search-container .search-forms {
     top: -147px;
     padding-top: 5rem;
     height: 80vh; }
     .search-container .search-forms #searchForm {
-      width: 50%; }
+      width: 78%; }
     .search-container .search-forms input::placeholder {
       color: #EFE6DD; }
     .search-container .search-forms h2 {
@@ -103,6 +106,9 @@ body {
       font-size: 1.3rem; }
     .search-container .search-forms #genre {
       height: 62px; }
+    .search-container .search-forms .btn-group-toggle {
+      margin: 0 auto;
+      width: 78%; }
     .search-container .search-forms .btn-group-toggle .searchButton {
       color: #EFE6DD; }
     .search-container .search-forms .btn {
@@ -133,7 +139,11 @@ body {
   .search-container .form-check-label {
     padding-left: 0.25rem;
     padding-right: 1.5rem; }
-  .search-container .btn-group-toggle .btn.active {
+  .search-container .btn-group-toggle #genreButton, .search-container .btn-group-toggle #yearButton {
+    border-color: #BB4430; }
+  .search-container .btn-group-toggle .active#genreButton, .search-container .btn-group-toggle .active#yearButton {
+    background: #BB4430; }
+  .search-container .btn-group-toggle .active#titleButton {
     background: #2191fb; }
   .search-container .col-md-2 {
     padding: 0; }
@@ -185,7 +195,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 60vh;
+  height: 70vh;
   margin: 0;
   padding: 0; }
   .page_index .landing-container h2 {
@@ -216,7 +226,7 @@ body {
     margin-top: 10%;
     background-color: transparent; }
   .page_index .landing-container .btn-primary {
-    font-size: 1.5em;
+    font-size: 1rem;
     color: #EFE6DD;
     background-color: transparent;
     border-color: #2191fb;
@@ -232,33 +242,36 @@ body {
   .page_index .browse-container > h2 {
     padding-top: 2rem;
     margin-top: 3rem;
-    margin-bottom: 3rem;
-    font-family: 'Bitter', serif;
+    margin-bottom: 0;
+    font-family: 'Work Sans', sans-serif;
     color: #EFE6DD;
-    font-size: 1.5rem; }
+    font-size: 2rem; }
   .page_index .browse-container .modal-header h2 {
-    font-size: 3rem; }
+    font-size: 2rem; }
   .page_index .browse-container .modal-content {
     background-color: #BB4430; }
   .page_index .browse-container .modal-body {
     background-color: #231F20;
     font-size: 1.2rem; }
     .page_index .browse-container .modal-body p {
-      font-size: 1.5rem; }
+      font-size: 1.2rem; }
     .page_index .browse-container .modal-body button {
-      font-size: 2rem; }
+      font-size: 1.5rem; }
     .page_index .browse-container .modal-body .btn-navy {
-      background-color: #BB4430;
-      border: 1px solid #BB4430;
+      background-color: #2191fb;
+      border: 1px solid #2191fb;
       color: #EFE6DD; }
   .page_index .browse-container .modal-footer {
     background-color: #231F20; }
 
 @media (max-width: 768px) {
   .page_index .landing-container {
-    height: 50vh; }
+    height: 75vh; }
     .page_index .landing-container .form-control {
-      width: 80%; } }
+      width: 80%; }
+  .page_index .col-xl-2 {
+    padding-left: 0;
+    padding-right: 0; } }
 
 @media (min-width: 1200px) {
   .page_index .landing-container .form-control {

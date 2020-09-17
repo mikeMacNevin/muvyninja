@@ -38,7 +38,7 @@
                     <div class="modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h2 class="modal-title font-italic">{{original_title}} </h2>
+                                <h2 class="modal-title font-italic">{{original_title}} {{yearOnly release_year 0 4}} </h2>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -52,7 +52,6 @@
                                     <div class="col-md-5 text-white text-center">
                                         <img class="w-100" src="http://image.tmdb.org/t/p/w185/{{ backdrop_path }}" alt="">
                                         
-                                        <p>{{release_date}}</p>
 {{!-- 
                                         <form action="/movies" method="POST">
                                             <input type="hidden" id="title" name="title" value="{{title}}" />
