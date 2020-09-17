@@ -247,14 +247,13 @@ body {
     color: #EFE6DD;
     font-size: 2rem; }
   .page_index .browse-container .modal-header h2 {
-    font-size: 2rem; }
+    font-size: 1.5rem; }
   .page_index .browse-container .modal-content {
     background-color: #BB4430; }
   .page_index .browse-container .modal-body {
-    background-color: #231F20;
-    font-size: 1.2rem; }
+    background-color: #231F20; }
     .page_index .browse-container .modal-body p {
-      font-size: 1.2rem; }
+      font-size: 1rem; }
     .page_index .browse-container .modal-body button {
       font-size: 1.5rem; }
     .page_index .browse-container .modal-body .btn-navy {
@@ -265,6 +264,9 @@ body {
     background-color: #231F20; }
 
 @media (max-width: 768px) {
+  .the-body {
+    padding-left: 3rem;
+    padding-right: 3rem; }
   .page_index .landing-container {
     height: 75vh; }
     .page_index .landing-container .form-control {

@@ -95,7 +95,7 @@
         }
         .modal-header {
             h2 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
         }
         .modal-content {
@@ -103,9 +103,8 @@
         }
         .modal-body {
             background-color: $dark;
-            font-size: 1.2rem;
             p {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
 
             button {
@@ -127,6 +126,10 @@
 
 
 @media (max-width: $breakpoint-tablet) {
+    .the-body {
+        padding-left:3rem;
+        padding-right:3rem;
+    }
     .page_index {
         .landing-container {
             height: 75vh;
