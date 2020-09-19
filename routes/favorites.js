@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const keys = require('../config/keys');
 const Movie = require('../models/Movie');
 
 const {ensureAuthenticated} = require('../helpers/auth');

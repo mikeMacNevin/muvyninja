@@ -25,9 +25,6 @@ const movies = require('./routes/movies');
 const favorites = require('./routes/favorites');
 
 
-// Load Keys - taken out for .env for now
-// const keys = require('./config/keys');
-
 // Models
 require('./models/User');
 // Config
