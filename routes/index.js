@@ -53,6 +53,7 @@ router.get('/', (req, res) => {
         }
         });
   })).catch(errors => {
+    res.render(index);
     console.log(errors);
   })
 });

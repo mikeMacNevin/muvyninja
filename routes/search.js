@@ -79,12 +79,17 @@ router.post('/film', (req, res) => {
         }).then(function(response) {
             let requestOne = response.data.results;
             console.log("requestOne: " + JSON.stringify(requestOne));
+            if (requestOne.length < 1) {
+                res.render('search');
+            } else {
+
             let movieId = requestOne[0].id;
             // let movieId = response.data.results[0].movie_id;
             // console.log("movieId: " + movieId);
             axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=52355b2a478c82d6bfe5a57afff6c916`, {
             }).then(function(response) {
             let requestTwo = response.data;
+
                 // console.log(requestTwo);
             let cast = requestTwo.cast;
             let crew = requestTwo.crew;
@@ -102,7 +107,7 @@ router.post('/film', (req, res) => {
                     producers.push(e);
                 }
             });
-
+        
             let year = requestOne[0].release_date.slice(0,4);
             res.render('search', {
                 'movies' : requestOne,
@@ -115,8 +120,10 @@ router.post('/film', (req, res) => {
             }).catch(e => {
                 console.log(e)
                 }) 
+            }
         }).catch(e => {
-        console.log(e)
+        console.log(e);
+            
         }) 
     
     }
