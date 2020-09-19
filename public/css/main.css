@@ -46,7 +46,7 @@ body {
 
 .search-container {
   margin-top: 1rem;
-  text-align: center;
+  text-align: right;
   max-width: 100%;
   /* first movie */ }
   .search-container .btn-link {
@@ -61,19 +61,21 @@ body {
     color: #EFE6DD; }
   .search-container .btn-favorites {
     background-color: #2191fb; }
-  .search-container .best-match .best-title {
-    font-size: 3rem; }
-  .search-container .best-match .best-title span {
-    color: #2191fb; }
-  .search-container .best-match h4 {
-    font-size: 1.5rem;
-    margin-bottom: 0.3rem;
-    color: #2191fb; }
-  .search-container .best-match p {
-    font-size: 1.25rem;
-    margin-bottom: 0.1rem; }
-  .search-container .best-match .cast-profile {
-    max-height: 100px; }
+  .search-container .best-match {
+    text-align: center; }
+    .search-container .best-match .best-title {
+      font-size: 3rem; }
+    .search-container .best-match .best-title span {
+      color: #2191fb; }
+    .search-container .best-match h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
+      color: #2191fb; }
+    .search-container .best-match p {
+      font-size: 1.25rem;
+      margin-bottom: 0.1rem; }
+    .search-container .best-match .cast-profile {
+      max-height: 100px; }
   .search-container #searchForm {
     text-align: left; }
     .search-container #searchForm input, .search-container #searchForm select {
@@ -88,6 +90,8 @@ body {
       font-family: 'Bitter', serif; }
     .search-container #searchForm select option {
       color: #231F20; }
+    .search-container #searchForm select option:first-child {
+      color: rgba(239, 230, 221, 0.5); }
   .search-container .search-forms {
     top: -147px;
     padding-top: 5rem;
@@ -95,7 +99,7 @@ body {
     .search-container .search-forms #searchForm {
       width: 78%; }
     .search-container .search-forms input::placeholder {
-      color: #EFE6DD; }
+      color: rgba(239, 230, 221, 0.5); }
     .search-container .search-forms h2 {
       font-size: 3.3rem;
       color: #EFE6DD; }
@@ -171,6 +175,8 @@ body {
       color: #EFE6DD; }
 
 @media screen and (max-width: 768px) {
+  .search-container {
+    text-align: center; }
   .search-first-img {
     height: 50vmin; }
   .search-img {
@@ -243,12 +249,12 @@ body {
 .page_index .browse-container {
   margin-top: 5rem; }
   .page_index .browse-container > h2 {
-    padding-top: 2rem;
-    margin-top: 3rem;
+    padding-top: 3rem;
+    margin-top: 4rem;
     margin-bottom: 0;
     font-family: 'Work Sans', sans-serif;
     color: #EFE6DD;
-    font-size: 2rem; }
+    font-size: 3.5rem; }
   .page_index .browse-container .modal-header h2 {
     font-size: 1.5rem; }
   .page_index .browse-container .modal-content {

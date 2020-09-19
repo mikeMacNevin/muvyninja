@@ -1,6 +1,6 @@
 .search-container {
     margin-top: 1rem;
-    text-align: center;
+    text-align: right;
     max-width: 100%;
 
     .btn-link {
@@ -27,6 +27,7 @@
 
 
     .best-match {
+        text-align: center;
         .best-title {
             font-size: 3rem;
         }
@@ -64,6 +65,11 @@
         select option {
             color: $dark;
         }
+        select option:first-child {
+            color: rgba(239,230,221, 0.5);
+        }
+        
+
     }
 
     .search-forms {
@@ -78,8 +84,9 @@
         
 
         input::placeholder {
-            color: $white;
+            color: rgba(239,230,221, 0.5);
         }
+
         h2 {
             font-size: 3.3rem;
             color: $white;
@@ -217,6 +224,9 @@
 }
 
 @media screen and (max-width: 768px) {
+    .search-container {
+        text-align:center;
+    }
     .search-first-img {
         height: 50vmin;
     }
