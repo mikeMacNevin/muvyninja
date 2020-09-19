@@ -95,11 +95,18 @@ body {
   .search-container .search-forms {
     top: -147px;
     padding-top: 5rem;
-    height: 80vh; }
+    height: 80vh;
+    /* Firefox */ }
     .search-container .search-forms #searchForm {
       width: 78%; }
     .search-container .search-forms input::placeholder {
       color: rgba(239, 230, 221, 0.5); }
+    .search-container .search-forms input::-webkit-outer-spin-button,
+    .search-container .search-forms input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
+    .search-container .search-forms input[type=number] {
+      -moz-appearance: textfield; }
     .search-container .search-forms h2 {
       font-size: 3.3rem;
       color: #EFE6DD; }

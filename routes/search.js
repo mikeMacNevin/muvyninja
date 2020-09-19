@@ -27,6 +27,8 @@ router.post('/film', (req, res) => {
     // console.log("req.body: " + JSON.stringify(req.body));
     let minYear = '';
     let maxYear = '';
+
+ 
     if (req.body.minYear) {
         minYear = `&primary_release_date.gte=${req.body.minYear}-01-01`;
     }

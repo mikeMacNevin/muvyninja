@@ -87,6 +87,16 @@
             color: rgba(239,230,221, 0.5);
         }
 
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+
         h2 {
             font-size: 3.3rem;
             color: $white;
