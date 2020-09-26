@@ -1,89 +1,17 @@
 var genre = {
     "Adventure": 12,
     "Comedy": 35,
+    "Documentary": 99,
     "Drama" :18,
+    "Family":10751,
+    "Fantasy": 14,
     "Horror": 27,
     "Romance": 10749,
+    "Sci-Fi": 878,
+    "Thriller": 53,
+    "War": 10752,
+    "All" : [[12, "Adventure"], [35, "Comedy"], [18, "Drama"], [10749, "Romance"], [878, "Sci-Fi"]]
 }
 
 exports.genre = genre;
 
-// "genres": [
-//     {
-//     "id": 28,
-//     "name": "Action"
-//     },
-//     {
-//     "id": 12,
-//     "name": "Adventure"
-//     },
-//     {
-//     "id": 16,
-//     "name": "Animation"
-//     },
-//     {
-//     "id": 35,
-//     "name": "Comedy"
-//     },
-//     {
-//     "id": 80,
-//     "name": "Crime"
-//     },
-//     {
-//     "id": 99,
-//     "name": "Documentary"
-//     },
-//     {
-//     "id": 18,
-//     "name": "Drama"
-//     },
-//     {
-//     "id": 10751,
-//     "name": "Family"
-//     },
-//     {
-//     "id": 14,
-//     "name": "Fantasy"
-//     },
-//     {
-//     "id": 36,
-//     "name": "History"
-//     },
-//     {
-//     "id": 27,
-//     "name": "Horror"
-//     },
-//     {
-//     "id": 10402,
-//     "name": "Music"
-//     },
-//     {
-//     "id": 9648,
-//     "name": "Mystery"
-//     },
-//     {
-//     "id": 10749,
-//     "name": "Romance"
-//     },
-//     {
-//     "id": 878,
-//     "name": "Science Fiction"
-//     },
-//     {
-//     "id": 10770,
-//     "name": "TV Movie"
-//     },
-//     {
-//     "id": 53,
-//     "name": "Thriller"
-//     },
-//     {
-//     "id": 10752,
-//     "name": "War"
-//     },
-//     {
-//     "id": 37,
-//     "name": "Western"
-//     }
-
-// ]

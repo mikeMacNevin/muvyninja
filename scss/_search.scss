@@ -218,18 +218,20 @@
     .modal-content {
         background-color: $orange;
     }
+  
     .modal-body {
         background-color: $dark;
         font-size: 1.2rem;
+        .btn-navy {
+            background-color:  $teal;
+            border: 1px solid $teal;
+            color: $white;
+        }
+  
     }
     .modal-footer {
-        background-color:$dark;
-        color:$white;
-        .btn-navy {
-            background-color:  $orange;
-            border: 1px solid $orange;
-            color: $white;
-        }    
+        background-color :$dark;
+        color: $white;
     }
 }
 

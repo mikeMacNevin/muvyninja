@@ -173,13 +173,13 @@ body {
   .search-container .modal-body {
     background-color: #231F20;
     font-size: 1.2rem; }
+    .search-container .modal-body .btn-navy {
+      background-color: #2191fb;
+      border: 1px solid #2191fb;
+      color: #EFE6DD; }
   .search-container .modal-footer {
     background-color: #231F20;
     color: #EFE6DD; }
-    .search-container .modal-footer .btn-navy {
-      background-color: #BB4430;
-      border: 1px solid #BB4430;
-      color: #EFE6DD; }
 
 @media screen and (max-width: 768px) {
   .search-container {

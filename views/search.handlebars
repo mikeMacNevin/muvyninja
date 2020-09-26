@@ -76,11 +76,18 @@
                      <div class="form-group search-genre my-4">
                         <h5>Pick Genre</h5>
                         <select class="form-control" id="genre" name="genre" autocomplete="off" onfocus="this.placeholder = '' " onblur="this.placeholder = 'Genre'" aria-placeholder="Genre">
-                            <option>Drama</option>
-                            <option>Comedy</option>
-                            <option>Romance</option>
                             <option>Adventure</option>
+                            <option>Comedy</option>
+                            
+                            <option>Drama</option>
+                            <option>Documentary</option>
+                            <option>Family</option>
+                            <option>Fantasy</option>
                             <option>Horror</option>
+                            <option>Romance</option>
+                            <option>Sci-Fi</option>
+                            <option>Thriller</option>
+                            <option>War</option>
                         </select>
                     </div>
                     <div class="form-group search-title my-4 d-none">
@@ -127,21 +134,22 @@
                                     <div class="col-md-7 text-white">
                                         <p> {{overview}}</p>
                                             <br><br>
-                                        <p>{{release_date}}</p>
 
                                     </div>
                                     <div class="col-md-5 text-white text-center">
                                         <img class="w-100" src="http://image.tmdb.org/t/p/w185/{{ backdrop_path }}" alt="">
+                                        <form action="/search/film" method="POST">
+                                            <input type="hidden" id="movie_id" name="movie_id" value={{id}} />
+                                            <input type="hidden" id="movieTitle" name="movieTitle" value="{{title}}" />
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn  modal-add btn-navy">View Details</button>
+                                        </form>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <form action="/movies" method="POST">
-                                    <button type="submit" class="btn btn-navy">Add to Favorites</button>
-                                    <input type="hidden" id="title" name="title" value="{{title}}" />
-                                    <input type="hidden" id="poster_path" name="poster_path" value={{poster_path}} />
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </form>
+  
                             </div>
                         </div>
                     </div>

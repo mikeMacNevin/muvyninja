@@ -15,68 +15,83 @@ router.get('/', (req, res) => {
     });
     
 router.post('/film', (req, res) => {
-    // console.log(req.body);
-    // post variables
 
+    //set movieRes as all results
     let movieRes = '';      
     movieRes = JSON.stringify(req.body);
+    
+
     let movieTitle = req.body.movieTitle;
-
-    console.log("movieTitle: " + movieTitle);
-
-    // console.log("req.body: " + JSON.stringify(req.body));
+    // min/max Year
     let minYear = '';
     let maxYear = '';
 
- 
+    // min/max Year url
     if (req.body.minYear) {
         minYear = `&primary_release_date.gte=${req.body.minYear}-01-01`;
     }
     if (req.body.maxYear) {
         maxYear = `&primary_release_date.lte=${req.body.maxYear}-12-31`;
     }
-    // let theGenre = genre[req.body.genre];
+
+    // genre
     let genre = '';
+
+    // genre url
     if (req.body.genre) {
         genre = `&with_genres=${genreObj.genre[req.body.genre]}`;
     }
-    console.log(minYear);
-    console.log(maxYear);
-    console.log(genre);
 
+
+    // IF MIN/MAX YEAR OR GENRE (OR BOTH)
     if (movieTitle.length < 1) {
-        const url = `https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1${minYear}${maxYear}${genre}`;
-        console.log(url);
-        axios.get(url)
-        .then(response => {
-            let movieRes = response.data.results;
-            var id =  JSON.stringify(movieRes[0].id);
-            axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=52355b2a478c82d6bfe5a57afff6c916
-            `).then(response => {
+        let urlOne = `https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1${minYear}${maxYear}${genre}`;
+        let urlTwo = `https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=2${minYear}${maxYear}${genre}`;
+        let urlThree = `https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=3${minYear}${maxYear}${genre}`;
+        let urlFour = `https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=4${minYear}${maxYear}${genre}`;
+        let urlFive = `https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=5${minYear}${maxYear}${genre}`;
 
-
-                let cast = response.data.cast.slice(0,4);
+                
+        const requestOne = axios.get(urlOne);
+        const requestTwo= axios.get(urlTwo);
+        const requestThree = axios.get(urlThree);
+        const requestFour = axios.get(urlFour);
+        const requestFive = axios.get(urlFive);
         
-                // console.log("cast - 5: " + JSON.stringify(cast));
-                // console.log("first movie: " + JSON.stringify(movieRes[0]));
-                console.log("first movie year: " + movieRes[0].release_date.slice(0,4));
-                let year = movieRes[0].release_date.slice(0,4);
-                res.render('search', {
-                    'movies' : movieRes.slice(1,19),
-                    'year': year,
-                    'firstMovie' : movieRes[0],
-                    'cast' : cast
-                });
-            }).catch(e => {
-                console.log(e);
-            });
-        }).catch(e => {
-            console.log(e);
+        axios.all([requestOne, requestTwo, requestThree, requestFour, requestFive]).then(axios.spread((...responses) => {
+            // let movieRes = one.concat(two, three, four, five);
+            let movieRes = responses[0].data.results.concat(responses[1].data.results, responses[2].data.results, responses[3].data.results, responses[4].data.results);
+            console.log('movieRes: ' + movieRes);
+            console.log(movieRes.length);
+            var id =  JSON.stringify(movieRes[0].id);
+            let year = movieRes[0].release_date.slice(0,4);
+
+            axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=52355b2a478c82d6bfe5a57afff6c916`)
+                .then(response => {
+                // get cast
+                let cast = response.data.cast.slice(0,4);
+                    res.render('search', {
+                        'movies' : movieRes.slice(1, movieRes.length),
+                        'year': year,
+                        'firstMovie' : movieRes[0],
+                        'cast' : cast
+                    });
+                })
+                .catch(e => {
+                    console.log(e);
+                })
+        }))
+        .catch(e => {
+            // console.log(e);
         });
     }
+  
+
+    
+
+
+    // ELSE IF TITLE SEARCH
     else if (movieTitle.length > 0) {
-        console.log("movieTitle: " + req.body.movieTitle);
-        // let requestOne = axios.get(``);
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&query=${movieTitle}&page=1&include_adult=false`, {
         }).then(function(response) {
             let requestOne = response.data.results;
@@ -84,6 +99,9 @@ router.post('/film', (req, res) => {
             if (requestOne.length < 1) {
                 res.render('search');
             } else {
+
+            let year = requestOne[0].release_date.slice(0,4);
+
 
             let movieId = requestOne[0].id;
             // let movieId = response.data.results[0].movie_id;
@@ -99,18 +117,15 @@ router.post('/film', (req, res) => {
             let producers = [];
             crew.forEach(e => {
                 if (e.job == "Director") {
-                    console.log(e);
                     directors.push(e);
                 }
             });
             crew.forEach(e => {
                 if (e.job == "Producer") {
-                    console.log(e);
                     producers.push(e);
                 }
             });
         
-            let year = requestOne[0].release_date.slice(0,4);
             res.render('search', {
                 'movies' : requestOne,
                 'firstMovie' : requestOne[0],
