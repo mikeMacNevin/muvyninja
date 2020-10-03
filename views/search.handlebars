@@ -2,7 +2,9 @@
 {{!-- style="background: url(http://image.tmdb.org/t/p/w342/{{ firstMovie.poster_path }}); background-repeat: no-repeat; background-size: cover; height: 50vmin;" --}}
 <div class="container-fluid search-container">
         {{#if firstMovie.poster_path }}
-        <a class="btn mx-auto new-search mr-4 my-3" href="/search" >New Search</a>
+        <div class="text-right">
+            <a class="btn new-search mr-1 my-3" href="/search" >New Search</a>
+        </div>
         {{/if}}
 
     <div class="row ">
@@ -12,17 +14,21 @@
             <img class="search-first-img img-fluid" src="http://image.tmdb.org/t/p/w342/{{ firstMovie.poster_path }}" alt="{{firstMovie.original_title}}">
         </div>
         <div class="col-md-6 col-lg-5 best-match">
-            <h3 class="best-title"><i>{{firstMovie.original_title}} ({{ year }})</i></h3>
-            
-            <h4>Director(s):</h4> 
-                {{#each directors}}
-                    <p>{{name}}</p>
-                {{/each}}
-            <h4>Producer(s)</h4>
-                {{#each producers}}
-                    <p>{{name}}</p>
-                {{/each}}
-            <br><br>
+          <div class="text-center">
+                <h3 class="best-title"><i>{{firstMovie.original_title}} ({{ year }})</i></h3>
+                
+                <h4>Director(s):</h4> 
+                    {{#each directors}}
+                        <p class="text-center">{{name}}</p>
+                    {{/each}}
+                <h4>Producer(s)</h4>
+                    {{#each producers}}
+                        <p class="text-center">{{name}}</p>
+                    {{/each}}
+                <br><br>
+          </div>
+
+
             <blockquote>{{firstMovie.overview}}</blockquote>
 
             <div class="d-flex flex-row justify-content-center">
@@ -36,14 +42,14 @@
 
             </div> 
         </div>   
-        <div class="col-md-4 offset-md-4 col-lg-3 offset-lg-0 ">
+        <div class="col-md-4 offset-md-5 col-lg-3 offset-lg-0 text-left">
              <table>
                 {{#each cast}}
                 <tr>
                     <td>
                         <img class="img-responsive cast-profile" src="http://image.tmdb.org/t/p/w45{{ profile_path }}" alt="">
                     </td>
-                    <td><span>{{name}}</span><br><i>{{character}}</i></td>
+                    <td><span>&nbsp;{{name}}</span><br><i>&nbsp;{{character}}</i></td>
                 </tr>
                 {{/each}}
             </table>
@@ -52,9 +58,9 @@
 
     
     {{else}} 
-        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5 search-forms d-flex flex-column justify-content-center">
+        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 search-forms d-flex flex-column justify-content-center">
             <div class="form-wrapper">
-                <h2 class="mt-5 text-center">Custom Search</h2>
+                <h2 class="text-center">Custom Search</h2>
                 <div class="btn-group-toggle d-flex justify-content-start" data-toggle="buttons">
                      <label class="btn mr-1 searchButton first-button active" id="genreButton">
                         <input type="checkbox" checked autocomplete="off" >Genre
@@ -68,12 +74,12 @@
                 </div>
     
                 <form method="POST" id="searchForm" class="mx-auto" action="/search/film">        
-                    <div class="form-group search-year my-4">
+                    <div class="form-group search-year my-2">
                         <h5>Release Year</h5>
                         <input type="number" autocomplete="off" onfocus="this.placeholder = '' " onblur="this.placeholder = 'MIN'" class="form-control mb-2" id="minYear" name="minYear" placeholder="MIN">
                         <input type="number" autocomplete="off" onfocus="this.placeholder = '' " onblur="this.placeholder = 'MAX'"class="form-control mb-2" id="maxYear" name="maxYear" placeholder="MAX">
                     </div>
-                     <div class="form-group search-genre my-4">
+                     <div class="form-group search-genre my-2">
                         <h5>Pick Genre</h5>
                         <select class="form-control" id="genre" name="genre" autocomplete="off" onfocus="this.placeholder = '' " onblur="this.placeholder = 'Genre'" aria-placeholder="Genre">
                             <option>Adventure</option>
@@ -105,15 +111,15 @@
     </div> <!--div.row -->
 
     {{#if movies}}
-        <h3 class="text-center other-matches">Other Matches</h3>
+        <h3 class="text-center mx-auto mt-4">Other Matches</h3>
     {{/if}}
 
-    <div class="row row justify-content-center other-matches mb-5">
+    <div class="row row justify-content-center other-matches mb-5 mx-auto">
         {{#each movies}}
             {{#if poster_path }}
                 {{#if @first}}
                 {{else}}
-                <div class="col-md-2 text-center">
+                <div class="col-sm-4 col-md-3 col-lg-2 text-center">
                     <a href="" data-toggle="modal" data-target="#exampleModal{{original_title}}">
                         <img class="img-responsive search-img" src="http://image.tmdb.org/t/p/w185/{{ poster_path }}" alt="{{original_title}}">
                     </a>
@@ -124,7 +130,7 @@
                     <div class="modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h2 class="modal-title font-italic">{{original_title}} </h2>
+                                <h2 class="modal-title font-italic">{{original_title}} ({{yearOnly release_date }}) </h2>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -162,5 +168,6 @@
   <a id="back-to-top" href="#" class="btn btn-lg back-to-top" role="button"><i class="fa fa-chevron-up"></i></a>
 
 </div>
+
 
 

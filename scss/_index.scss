@@ -127,8 +127,8 @@
 
 @media (max-width: $breakpoint-tablet) {
     .the-body {
-        padding-left:3rem;
-        padding-right:3rem;
+        padding-left:1rem;
+        padding-right:1rem;
     }
     .page_index {
         .landing-container {
@@ -141,8 +141,24 @@
             padding-left: 0;
             padding-right: 0;
         }
-     
+
     }
+    .browse-container {
+        h2 {
+           font-size: 2.9rem; 
+        }
+        .col-md-4 {
+            text-align: center;
+
+        }
+        .card-img-top {
+            width: 80%;
+            margin: 0 auto;
+        }
+        
+    }
+ 
+    
 }
 
 @media (min-width: 1200px) {

@@ -50,7 +50,7 @@ router.get('/', (req, res) => {
 
 
   const requestOne = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`);
-  const requestTwo = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1&year=2019`);
+  const requestTwo = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2019`);
   const requestThree = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1&year=${yearOne}&with_genres=${genreOne}`);
   const requestFour = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1&year=${yearTwo}&with_genres=${genreTwo}`);
   const requestFive = axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1&year=${yearThree}&with_genres=${genreThree}`);
@@ -79,9 +79,8 @@ router.get('/', (req, res) => {
     randomOne = responseThree.data.results.slice(0,18);
     randomTwo = responseFour.data.results.slice(0,18);
     randomThree = responseFive.data.results.slice(0,18);
-
-  // console.log(popularNow);
-    // console.log(popularNow);
+    
+  console.log(popularNow);
 
     res.render('index', {
           'popularNow': popularNow,
@@ -97,10 +96,7 @@ router.get('/', (req, res) => {
           'yearThree' : yearThree,
           'imageUrl': 'http://image.tmdb.org/t/p/w185/',
           'userID': userID,
-          'movieAdded': movieAdded,
-          'helpers' : {
-            year: function () { return ; }
-        }
+          'movieAdded': movieAdded,        
         });
   })).catch(errors => {
     console.log(errors);

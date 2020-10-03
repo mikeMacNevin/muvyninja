@@ -89,12 +89,11 @@ mongoose.connect(process.env.MONGO_URI, {
 app.engine('handlebars', exphbs({
    defaultLayout: 'main',
    helpers: {
-     yearOnly: function (movieDate, start, end) { 
+     yearOnly(movieDate) { 
        if (movieDate) {
-        movieDate = movieDate.substring(start, end); 
+        return movieDate = movieDate.substring(0, 4); 
 
        }
-       return movieDate; 
 
       }
    }
