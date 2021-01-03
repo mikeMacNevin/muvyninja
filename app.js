@@ -15,6 +15,8 @@ const MongoStore = require('connect-mongo')(session);
 const connectDB = require('./config/db');
 
 
+var compression = require('compression')
+
 
 // Routes
 const auth = require('./routes/auth');
@@ -40,6 +42,7 @@ connectDB();
 
 // Express - Start App
 const app = express();
+app.use(compression())
 
 // Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));

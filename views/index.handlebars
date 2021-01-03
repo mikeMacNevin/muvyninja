@@ -16,310 +16,55 @@
         </div>
     </div>
 
-    </div>
+    </div> <!-- yes it's necessary -->
 
     <div class="container-fluid browse-container">
         <h2 class="text-center">Popular Now</h2>
         <div class="row">
-        {{#each popularNow}}
-            {{#if poster_path }}
-            <div class=" col-md-4 col-xl-2"> 
-                <a href="" data-toggle="modal" data-target="#exampleModal{{original_title}}">
-                    <img class="card-img-top my-3"  src="http://image.tmdb.org/t/p/w185/{{ poster_path }}" alt="movie poster">
-                </a>
-            </div>
-            <div class="modal" id="exampleModal{{original_title}}" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="container">
-                    <div class="modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2 class="modal-title font-italic">{{title}} ({{yearOnly release_date }}) </h2>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-7 text-white">
-                                        <p> {{overview}}</p>
-                                            <br><br>   
-                                    </div>
-                                    <div class="col-md-5 text-white text-center">
-                                        <img class="w-100" src="http://image.tmdb.org/t/p/w185/{{ backdrop_path }}" alt="">
-                                    
-                                        <form action="/search/film" method="POST">
-                                                <input type="hidden" id="movie_id" name="movie_id" value={{id}} />
-                                                <input type="hidden" id="movieTitle" name="movieTitle" value="{{title}}" />
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn  modal-add btn-navy">View Details</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{/if}}
-        {{/each}}
-    </div> 
+            {{#each popularNow}}
+                {{#if poster_path }}
+                    {{> _browseSection}}
+                {{/if}}
+            {{/each}}
+        </div>
 
-<h2 class="text-center">Top Movies of 2019</h2>
-<div class="row">
-    {{#each yearGrossing}}
-        {{#if poster_path }}
-            <div class=" col-md-4 col-xl-2"> 
-                <a href="" data-toggle="modal" data-target="#exampleModal{{title}}">
-                    <img class="card-img-top my-1"  src="http://image.tmdb.org/t/p/w185/{{ poster_path }}" alt="movie poster">
-                </a>
-            </div>
-            <div class="modal" id="exampleModal{{original_title}}" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="container">
-                    <div class="modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2 class="modal-title font-italic">{{title}} ({{yearOnly release_date }}) </h2>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-7 text-white">
-                                        <p> {{overview}}</p>
-                                            <br><br>
-                                        <p>{{release_date}}</p>
+        <h2 class="text-center">Top Movies of 2019</h2>
+        <div class="row">
+            {{#each yearGrossing}}
+                {{#if poster_path }}
+                    {{> _browseSection}}
+                {{/if}}
+            {{/each}}
+        </div>
 
-                                    </div>
-                                    <div class="col-md-5 text-white text-center">
-                                        <img class="w-100" src="http://image.tmdb.org/t/p/w185/{{ backdrop_path }}" alt="">
-                                    <form action="/search/film" method="POST">
-                                        <input type="hidden" id="movie_id" name="movie_id" value={{id}} />
-                                        <input type="hidden" id="movieTitle" name="movieTitle" value="{{title}}" />
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn  modal-add btn-navy">View Details</button>
-                                    </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
+        <h2 class="text-center">Top {{genreNameOne}} Movies of {{ yearOne }}</h2>
+        <div class="row">
+            {{#each randomOne}}
+                {{#if poster_path }}
+                {{> _browseSection}}
+                {{/if}}
+            {{/each}}
+        </div> 
 
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {{/if}}
-    {{/each}}
-    </div> 
+        <h2 class="text-center">Top {{genreNameTwo}} Movies of {{ yearTwo }}</h2>
+        <div class="row">
+            {{#each randomTwo}}
+                {{#if poster_path }}
+                    {{> _browseSection}}
+                {{/if}}
+            {{/each}}
+        </div> 
 
-<h2 class="text-center">Top {{genreNameOne}} Movies of {{ yearOne }}</h2>
-<div class="row">
-    {{#each randomOne}}
-        {{#if poster_path }}
-            <div class=" col-md-4 col-xl-2"> 
-                <a href="" data-toggle="modal" data-target="#exampleModal{{title}}">
-                    <img class="card-img-top my-1"  src="http://image.tmdb.org/t/p/w185/{{ poster_path }}" alt="movie poster">
-                </a>
-            </div>
-            <div class="modal" id="exampleModal{{original_title}}" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="container">
-                    <div class="modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2 class="modal-title font-italic">{{title}} ({{yearOnly release_date }})</h2>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-7 text-white">
-                                        <p> {{overview}}</p>
-                                            <br><br>
-                                        <p>{{release_date}}</p>
+        <h2 class="text-center">Top {{genreNameThree}} Movies of {{ yearThree }}</h2>
+        <div class="row">
+            {{#each randomThree}}
+                {{#if poster_path }}
+                    {{> _browseSection}}
+                {{/if}}
+            {{/each}}
+        </div> 
+    </div>
 
-                                    </div>
-                                    <div class="col-md-5 text-white text-center">
-                                        <img class="w-100" src="http://image.tmdb.org/t/p/w185/{{ backdrop_path }}" alt="">
-                                    <form action="/search/film" method="POST">
-                                        <input type="hidden" id="movie_id" name="movie_id" value={{id}} />
-                                        <input type="hidden" id="movieTitle" name="movieTitle" value="{{title}}" />
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn  modal-add btn-navy">View Details</button>
-                                    </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {{/if}}
-    {{/each}}
-    </div> 
-
-<h2 class="text-center">Top {{genreNameTwo}} Movies of {{ yearTwo }}</h2>
-<div class="row">
-    {{#each randomTwo}}
-        {{#if poster_path }}
-            <div class=" col-md-4 col-xl-2"> 
-                <a href="" data-toggle="modal" data-target="#exampleModal{{title}}">
-                    <img class="card-img-top my-1"  src="http://image.tmdb.org/t/p/w185/{{ poster_path }}" alt="movie poster">
-                </a>
-            </div>
-            <div class="modal" id="exampleModal{{original_title}}" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="container">
-                    <div class="modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2 class="modal-title font-italic">{{title}} ({{yearOnly release_date }}) </h2>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-7 text-white">
-                                        <p> {{overview}}</p>
-                                            <br><br>
-                                        <p>{{release_date}}</p>
-
-                                    </div>
-                                    <div class="col-md-5 text-white text-center">
-                                        <img class="w-100" src="http://image.tmdb.org/t/p/w185/{{ backdrop_path }}" alt="">
-                                    <form action="/search/film" method="POST">
-                                        <input type="hidden" id="movie_id" name="movie_id" value={{id}} />
-                                        <input type="hidden" id="movieTitle" name="movieTitle" value="{{title}}" />
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn  modal-add btn-navy">View Details</button>
-                                    </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {{/if}}
-    {{/each}}
-    </div> 
-<h2 class="text-center">Top {{genreNameThree}} Movies of {{ yearThree }}</h2>
-<div class="row">
-    {{#each randomThree}}
-        {{#if poster_path }}
-            <div class=" col-md-4 col-xl-2"> 
-                <a href="" data-toggle="modal" data-target="#exampleModal{{title}}">
-                    <img class="card-img-top my-1"  src="http://image.tmdb.org/t/p/w185/{{ poster_path }}" alt="movie poster">
-                </a>
-            </div>
-            <div class="modal" id="exampleModal{{original_title}}" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="container">
-                    <div class="modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2 class="modal-title font-italic">{{title}} ({{yearOnly release_date }})</h2>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-7 text-white">
-                                        <p> {{overview}}</p>
-                                            <br><br>
-                                        <p>{{release_date}}</p>
-
-                                    </div>
-                                    <div class="col-md-5 text-white text-center">
-                                        <img class="w-100" src="http://image.tmdb.org/t/p/w185/{{ backdrop_path }}" alt="">
-                                    <form action="/search/film" method="POST">
-                                        <input type="hidden" id="movie_id" name="movie_id" value={{id}} />
-                                        <input type="hidden" id="movieTitle" name="movieTitle" value="{{title}}" />
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn  modal-add btn-navy">View Details</button>
-                                    </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {{/if}}
-    {{/each}}
-    </div> 
-
-{{!-- <h2 class="text-center">Best Comedies: 1994</h2>
-<div class="row">
-    {{#each yearComedy}}
-        {{#if poster_path }}
-            <div class=" col-md-4 col-xl-2"> 
-                <a href="" data-toggle="modal" data-target="#exampleModal{{title}}">
-                    <img class="card-img-top my-1"  src="http://image.tmdb.org/t/p/w185/{{ poster_path }}" alt="movie poster">
-                </a>
-            </div>
-            <div class="modal" id="exampleModal{{original_title}}" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="container">
-                    <div class="modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2 class="modal-title font-italic">{{title}} </h2>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-7 text-white">
-                                        <p> {{overview}}</p>
-                                            <br><br>
-                                    </div>
-                                    <div class="col-md-5 text-white text-center">
-                                        <img class="w-100" src="http://image.tmdb.org/t/p/w185/{{ backdrop_path }}" alt="">
-                                    <form action="/search/film" method="POST">
-                                        <input type="hidden" id="movie_id" name="movie_id" value={{id}} />
-                                        <input type="hidden" id="movieTitle" name="movieTitle" value="{{title}}" />
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn  modal-add btn-navy">View Details</button>
-                                    </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {{/if}}
-    {{/each}}
-    </div> 
- --}}
-
-
-
-
-
-
-
-
-
-    
-</div>
   <a id="back-to-top" href="#" class="btn btn-lg back-to-top" role="button"><i class="fa fa-chevron-up"></i></a>
 
 </div>

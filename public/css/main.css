@@ -241,7 +241,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 70vh;
+  height: 60vh;
   margin: 0;
   padding: 0; }
   .page_index .landing-container h2 {
@@ -314,7 +314,7 @@ body {
     padding-left: 1rem;
     padding-right: 1rem; }
   .page_index .landing-container {
-    height: 75vh; }
+    height: 60vh; }
     .page_index .landing-container .form-control {
       width: 80%; }
   .page_index .col-xl-2 {

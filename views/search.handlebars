@@ -10,102 +10,10 @@
     <div class="row ">
 <!--first movie-->
     {{#if firstMovie.poster_path }}
-        <div class="col-md-6 col-lg-4 text-center " >
-            <img class="search-first-img img-fluid" src="http://image.tmdb.org/t/p/w342/{{ firstMovie.poster_path }}" alt="{{firstMovie.original_title}}">
-        </div>
-        <div class="col-md-6 col-lg-5 best-match">
-          <div class="text-center">
-                <h3 class="best-title"><i>{{firstMovie.original_title}} ({{ year }})</i></h3>
-                
-                <h4>Director(s):</h4> 
-                    {{#each directors}}
-                        <p class="text-center">{{name}}</p>
-                    {{/each}}
-                <h4>Producer(s)</h4>
-                    {{#each producers}}
-                        <p class="text-center">{{name}}</p>
-                    {{/each}}
-                <br><br>
-          </div>
-
-
-            <blockquote>{{firstMovie.overview}}</blockquote>
-
-            <div class="d-flex flex-row justify-content-center">
-                <form action="/movies" method="POST">
-                    <input type="hidden"  id="title" name="title" value="{{firstMovie.original_title}}" />
-                    <input type="hidden" id="poster_path" name="poster_path" value="{{firstMovie.poster_path}}" />
-                    <input type="hidden" id="directors" name="directors" value="{{directors}}" />
-                    <button type="submit" class="btn btn-favorites">Add to Favorites</button>
-                </form>  
-                <a href="/favorites"><button class="btn btn-link">View Favorites</button></a>         
-
-            </div> 
-        </div>   
-        <div class="col-md-4 offset-md-5 col-lg-3 offset-lg-0 text-left">
-             <table>
-                {{#each cast}}
-                <tr>
-                    <td>
-                        <img class="img-responsive cast-profile" src="http://image.tmdb.org/t/p/w45{{ profile_path }}" alt="">
-                    </td>
-                    <td><span>&nbsp;{{name}}</span><br><i>&nbsp;{{character}}</i></td>
-                </tr>
-                {{/each}}
-            </table>
-        </div>
-
-
-    
+        {{> _firstMovie }}
     {{else}} 
-        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 search-forms d-flex flex-column justify-content-center">
-            <div class="form-wrapper">
-                <h2 class="text-center">Custom Search</h2>
-                <div class="btn-group-toggle d-flex justify-content-start" data-toggle="buttons">
-                     <label class="btn mr-1 searchButton first-button active" id="genreButton">
-                        <input type="checkbox" checked autocomplete="off" >Genre
-                    </label>
-                    <label class="btn searchButton first-button active" id="yearButton">
-                        <input type="checkbox" checked autocomplete="off">Year Range
-                    </label>
-                    <label class="btn searchButton ml-auto second-button" id="titleButton">
-                        <input type="checkbox"  checked autocomplete="off">Title
-                    </label>
-                </div>
-    
-                <form method="POST" id="searchForm" class="mx-auto" action="/search/film">        
-                    <div class="form-group search-year my-2">
-                        <h5>Release Year</h5>
-                        <input type="number" autocomplete="off" onfocus="this.placeholder = '' " onblur="this.placeholder = 'MIN'" class="form-control mb-2" id="minYear" name="minYear" placeholder="MIN">
-                        <input type="number" autocomplete="off" onfocus="this.placeholder = '' " onblur="this.placeholder = 'MAX'"class="form-control mb-2" id="maxYear" name="maxYear" placeholder="MAX">
-                    </div>
-                     <div class="form-group search-genre my-2">
-                        <h5>Pick Genre</h5>
-                        <select class="form-control" id="genre" name="genre" autocomplete="off" onfocus="this.placeholder = '' " onblur="this.placeholder = 'Genre'" aria-placeholder="Genre">
-                            <option>Adventure</option>
-                            <option>Comedy</option>
-                            
-                            <option>Drama</option>
-                            <option>Documentary</option>
-                            <option>Family</option>
-                            <option>Fantasy</option>
-                            <option>Horror</option>
-                            <option>Romance</option>
-                            <option>Sci-Fi</option>
-                            <option>Thriller</option>
-                            <option>War</option>
-                        </select>
-                    </div>
-                    <div class="form-group search-title my-4 d-none">
-                        <h5>Title</h5>
-                        <label class="sr-only" for="inlineFormInputName2">Name</label>
-                        <input type="text" class="form-control mb-2" name="movieTitle" id="movieTitle"  autocomplete="off" onfocus="this.placeholder = '' " onblur="this.placeholder = 'Shawshank Redemption'" placeholder="Shawshank Redemption">
-                    </div>
-                    <button type="submit" id="submitButton" class="btn btn-block my-3 mx-auto">Search</button>
-                </form>
-            </div>
-        </div>
-        {{/if}}
+        {{> _searchForm }}    
+    {{/if}}
   
 
     </div> <!--div.row -->
@@ -119,48 +27,7 @@
             {{#if poster_path }}
                 {{#if @first}}
                 {{else}}
-                <div class="col-sm-4 col-md-3 col-lg-2 text-center">
-                    <a href="" data-toggle="modal" data-target="#exampleModal{{original_title}}">
-                        <img class="img-responsive search-img" src="http://image.tmdb.org/t/p/w185/{{ poster_path }}" alt="{{original_title}}">
-                    </a>
-                </div> 
-
-                <div class="modal" id="exampleModal{{original_title}}" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="container">
-                    <div class="modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2 class="modal-title font-italic">{{original_title}} ({{yearOnly release_date }}) </h2>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-7 text-white">
-                                        <p> {{overview}}</p>
-                                            <br><br>
-
-                                    </div>
-                                    <div class="col-md-5 text-white text-center">
-                                        <img class="w-100" src="http://image.tmdb.org/t/p/w185/{{ backdrop_path }}" alt="">
-                                        <form action="/search/film" method="POST">
-                                            <input type="hidden" id="movie_id" name="movie_id" value={{id}} />
-                                            <input type="hidden" id="movieTitle" name="movieTitle" value="{{title}}" />
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn  modal-add btn-navy">View Details</button>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-  
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    {{> _searchMovies }}
                 {{/if}}
             {{/if}}
         {{/each}}

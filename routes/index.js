@@ -14,13 +14,10 @@ const Movie = require('../models/Movie');
 
 
 router.get('/', (req, res) => {
-
   let newVar = '';
-
 
   var movieAdded = false;
   var userId;
-
 
   // set to random year between 1950 - 2019
   var yearOne = Math.floor(Math.random() * (2019 - 1965) + 1965);
@@ -64,23 +61,28 @@ router.get('/', (req, res) => {
     userID = "";
   }
 
-  axios.all([requestOne, requestTwo, requestThree, requestFour, requestFive]).then(axios.spread((...responses) => {
-    const responseOne = responses[0];
-    const responseTwo = responses[1];
-    const responseThree = responses[2];
-    const responseFour = responses[3];
-    const responseFive = responses[4];
+  res.render('index', function(err) {
 
-    // console.log("requestOne: *********************" + requestOne);
+  
+    axios.all([requestOne, requestTwo, requestThree, requestFour, requestFive]).then(axios.spread((...responses) => {
+      const responseOne = responses[0];
+      const responseTwo = responses[1];
+      const responseThree = responses[2];
+      const responseFour = responses[3];
+      const responseFive = responses[4];
 
-    popularNow = responseOne.data.results.slice(0,18);
-    yearGrossing = responseTwo.data.results.slice(0,18);
-    // yearComedy = responseThree.data.results.slice(0,18);
-    randomOne = responseThree.data.results.slice(0,18);
-    randomTwo = responseFour.data.results.slice(0,18);
-    randomThree = responseFive.data.results.slice(0,18);
-    
-  console.log(popularNow);
+      // console.log("requestOne: *********************" + requestOne);
+
+      popularNow = responseOne.data.results.slice(0,18);
+      yearGrossing = responseTwo.data.results.slice(0,18);
+      // yearComedy = responseThree.data.results.slice(0,18);
+      randomOne = responseThree.data.results.slice(0,18);
+      randomTwo = responseFour.data.results.slice(0,18);
+      randomThree = responseFive.data.results.slice(0,18);
+
+      console.log("index: ")
+      
+  // console.log(popularNow);
 
     res.render('index', {
           'popularNow': popularNow,
@@ -101,6 +103,7 @@ router.get('/', (req, res) => {
   })).catch(errors => {
     console.log(errors);
   })
+});
 });
 
 

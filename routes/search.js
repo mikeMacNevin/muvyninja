@@ -45,11 +45,11 @@ router.post('/film', (req, res) => {
 
     // IF MIN/MAX YEAR OR GENRE (OR BOTH)
     if (movieTitle.length < 1) {
-        let urlOne = `https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1${minYear}${maxYear}${genre}`;
-        let urlTwo = `https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=2${minYear}${maxYear}${genre}`;
-        let urlThree = `https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=3${minYear}${maxYear}${genre}`;
-        let urlFour = `https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=4${minYear}${maxYear}${genre}`;
-        let urlFive = `https://api.themoviedb.org/3/discover/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=5${minYear}${maxYear}${genre}`;
+        let urlOne = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=1${minYear}${maxYear}${genre}`;
+        let urlTwo = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=2${minYear}${maxYear}${genre}`;
+        let urlThree = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=3${minYear}${maxYear}${genre}`;
+        let urlFour = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=4${minYear}${maxYear}${genre}`;
+        let urlFive = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBkey}&language=en-US&sort_by=revenue.desc&include_adult=false&include_video=false&page=5${minYear}${maxYear}${genre}`;
 
                 
         const requestOne = axios.get(urlOne);
@@ -66,7 +66,7 @@ router.post('/film', (req, res) => {
             var id =  JSON.stringify(movieRes[0].id);
             let year = movieRes[0].release_date.slice(0,4);
 
-            axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=52355b2a478c82d6bfe5a57afff6c916`)
+            axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.TMDBkey}`)
                 .then(response => {
                 // get cast
                 let cast = response.data.cast.slice(0,4);
@@ -92,7 +92,7 @@ router.post('/film', (req, res) => {
 
     // ELSE IF TITLE SEARCH
     else if (movieTitle.length > 0) {
-        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=52355b2a478c82d6bfe5a57afff6c916&query=${movieTitle}&page=1&include_adult=false`, {
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDBkey}&query=${movieTitle}&page=1&include_adult=false`, {
         }).then(function(response) {
             let requestOne = response.data.results;
             console.log("requestOne: " + JSON.stringify(requestOne));
@@ -106,7 +106,7 @@ router.post('/film', (req, res) => {
             let movieId = requestOne[0].id;
             // let movieId = response.data.results[0].movie_id;
             // console.log("movieId: " + movieId);
-            axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=52355b2a478c82d6bfe5a57afff6c916`, {
+            axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.TMDBkey}`, {
             }).then(function(response) {
             let requestTwo = response.data;
 
