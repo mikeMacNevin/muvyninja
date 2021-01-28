@@ -1,14 +1,14 @@
 
-    .back-to-top {
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-        display: none;
-        background-color: $yellow;
-        i {
-        color: $dark;
-        }
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 5px;
+    display: none;
+    background-color: $yellow;
+    i {
+    color: $dark;
     }
+}
 
 .page_index {
     .landing-container {
