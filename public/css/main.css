@@ -228,13 +228,14 @@ body {
 .search-container .modal p {
   text-align: justify; }
 
-.back-to-top {
+#back-to-top {
+  z-index: 99;
   position: fixed;
   bottom: 25px;
-  right: 25px;
+  right: 1px;
   display: none;
   background-color: #F3DFA2; }
-  .back-to-top i {
+  #back-to-top i {
     color: #231F20; }
 
 .page_index .landing-container {
@@ -311,8 +312,8 @@ body {
 
 @media (max-width: 768px) {
   .the-body {
-    padding-left: 1rem;
-    padding-right: 1rem; }
+    padding-left: 0.5rem;
+    padding-right: 0.5rem; }
   .page_index .landing-container {
     height: 60vh; }
     .page_index .landing-container .form-control {
