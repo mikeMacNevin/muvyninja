@@ -49,6 +49,7 @@
         <h2 class="text-center">Top {{genreNameTwo}} Movies of {{ yearTwo }}</h2>
         <div class="row">
             {{#each randomTwo}}
+
                 {{#if poster_path }}
                     {{> _browseSection}}
                 {{/if}}

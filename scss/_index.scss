@@ -5,9 +5,9 @@
     bottom: 25px;
     right: 1px;
     display: none;
-    background-color: $yellow;
+    background-color: $yellow ;
     i {
-    color: $dark;
+    color: $dark ;
     }
 }
 
@@ -128,8 +128,8 @@
 
 @media (max-width: $breakpoint-tablet) {
     .the-body {
-        padding-left:1rem;
-        padding-right:1rem;
+        padding-left:0.5rem;
+        padding-right:0.5rem;
     }
     .page_index {
         .landing-container {
