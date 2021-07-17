@@ -208,7 +208,11 @@ body {
 
 @media screen and (max-width: 576px) {
   .search-container {
-    text-align: center; }
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0; }
+    .search-container h3 {
+      font-size: 2.25rem; }
     .search-container .other-matches {
       width: 80%; }
       .search-container .other-matches .col-sm-4 {
@@ -216,9 +220,9 @@ body {
   .search-container .search-forms h2 {
     font-size: 2.6rem; }
   .search-container .best-title {
-    font-size: 2rem; }
+    font-size: 1.75rem; }
   .search-first-img {
-    height: 120vmin; }
+    height: 60vmin; }
   .search-img {
     width: 80%; }
   .search-forms {
@@ -232,9 +236,13 @@ body {
   z-index: 99;
   position: fixed;
   bottom: 25px;
-  right: 1px;
+  right: 3px;
   display: none;
-  background-color: #F3DFA2; }
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: rgba(243, 223, 162, 0.8); }
   #back-to-top i {
     color: #231F20; }
 

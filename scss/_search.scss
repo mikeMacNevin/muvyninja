@@ -267,6 +267,12 @@
 @media screen and (max-width: 576px) {
     .search-container {
         text-align:center;
+        padding-left: 0;
+        padding-right: 0;
+
+        h3 {
+            font-size:2.25rem;
+        }
         .other-matches {
             width:80%;
             .col-sm-4 {
@@ -281,12 +287,12 @@
             }
         }
         .best-title {
-            font-size: 2rem;
+            font-size: 1.75rem;
         }
     }
     
     .search-first-img {
-        height: 120vmin;
+        height: 60vmin;
     }
     .search-img {
         width: 80%;

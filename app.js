@@ -121,10 +121,10 @@ app.use('/favorites', favorites);
 
 
 
-const port = 4000;
+const PORT = 4000;
 
-app.listen(process.env.PORT || port, () =>{
-  console.log(`Mike: Server started on port ${port}`);
+app.listen(process.env.PORT || PORT, () =>{
+  console.log(`Mike: Server started on port ${PORT}`);
 });
 
 

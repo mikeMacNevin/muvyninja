@@ -3,9 +3,13 @@
     z-index: 99;
     position: fixed;
     bottom: 25px;
-    right: 1px;
+    right: 3px;
     display: none;
-    background-color: $yellow ;
+    padding-top:13px;
+    padding-bottom:13px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: $yellow-trans;
     i {
     color: $dark ;
     }
