@@ -119,12 +119,11 @@ app.use('/search', search);
 app.use('/movies', movies);
 app.use('/favorites', favorites);
 
-
+app.enable("trust proxy")
 
 const PORT = 4000;
 
 app.listen(process.env.PORT || PORT, () =>{
-  console.log(`Mike: Server started on port ${PORT}`);
 });
 
 
