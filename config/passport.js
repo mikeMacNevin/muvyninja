@@ -29,7 +29,7 @@ module.exports = function (passport) {
             done(null, user)
           }
         } catch (err) {
-          console.error(err);
+          console.error("err: " + err);
           res.render('/auth/google');
         }
       }
