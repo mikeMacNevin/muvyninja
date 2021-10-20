@@ -61,8 +61,7 @@ router.post('/film', (req, res) => {
         axios.all([requestOne, requestTwo, requestThree, requestFour, requestFive]).then(axios.spread((...responses) => {
             // let movieRes = one.concat(two, three, four, five);
             let movieRes = responses[0].data.results.concat(responses[1].data.results, responses[2].data.results, responses[3].data.results, responses[4].data.results);
-            console.log('movieRes: ' + movieRes);
-            console.log(movieRes.length);
+
             var id =  JSON.stringify(movieRes[0].id);
             let year = movieRes[0].release_date.slice(0,4);
 
@@ -95,7 +94,6 @@ router.post('/film', (req, res) => {
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDBkey}&query=${movieTitle}&page=1&include_adult=false`, {
         }).then(function(response) {
             let requestOne = response.data.results;
-            console.log("requestOne: " + JSON.stringify(requestOne));
             if (requestOne.length < 1) {
                 res.render('search');
             } else {
