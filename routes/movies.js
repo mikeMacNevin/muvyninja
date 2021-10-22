@@ -56,7 +56,7 @@ router.get('/:id', ensureAuthenticated, async (req, res) => {
         movie
       })
     } catch (err) {
-      console.error(err)
+      console.error("THIS IS THE ERROR: "+ err)
       res.render('error/404')
     }
 })

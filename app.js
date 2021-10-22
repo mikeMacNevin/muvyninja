@@ -48,6 +48,9 @@ app.use(compression())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+
+app.enable("trust proxy")
+
 // Method override
 app.use(
   methodOverride(function (req, res) {
@@ -65,6 +68,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Session
+
 app.use(cookieParser());
 app.use(session({
   secret: 'secret',
@@ -119,7 +123,6 @@ app.use('/search', search);
 app.use('/movies', movies);
 app.use('/favorites', favorites);
 
-app.enable("trust proxy")
 
 const PORT = 4000;
 

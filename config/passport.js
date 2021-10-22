@@ -8,8 +8,10 @@ module.exports = function (passport) {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: `${process.env.BASE_URL}auth/google/callback`,
-        proxy: true
+        callbackURL: '/auth/google/callback'
+        // passReqToCallback : true
+
+        // proxy: true
       },
       async (accessToken, refreshToken, profile, done) => {
         const newUser = {
@@ -21,17 +23,24 @@ module.exports = function (passport) {
         }
 
         try {
-          let user = await User.findOne({ googleId: profile.id })
+          let user = await User.findOne({
+            googleId: profile.id
+          });
 
-          if (user) {
-            done(null, user)
+          if( user ) {
+            done(
+              null, 
+              user
+            ); 
           } else {
-            user = await User.create(newUser)
-            done(null, user)
+            user = await User.create(newUser);
+            done(
+              null, 
+              user
+            );
           }
         } catch (err) {
-          console.error("err: " + err);
-          res.render('/auth/google');
+          console.error(err);
         }
       }
     )
