@@ -8,9 +8,7 @@ module.exports = function (passport) {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: 'https://muvyninja-5vxuh.ondigitalocean.app/auth/google/callback',
-        // passReqToCallback : true,
-        proxy: true
+        callbackURL: '/auth/google/callback',
       },
       async (accessToken, refreshToken, profile, done) => {
         const newUser = {
@@ -18,7 +16,7 @@ module.exports = function (passport) {
           displayName: profile.displayName,
           firstName: profile.name.givenName,
           lastName: profile.name.familyName,
-          image: profile.photos[0].value
+          image: profile.photos[0].value,
         }
 
         try {
